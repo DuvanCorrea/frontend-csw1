@@ -1,0 +1,72 @@
+* {
+    margin: 0px;
+    padding: 0px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.Contenedor-Nav {
+    background-color: #3498DB;
+    display: flex;
+    height: 70px;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+}
+
+.Contenedor-Nav div {
+    display: flex;
+}
+
+.Contenedor-Nav .Usuario-icon {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.Contenedor-Nav .nav-menu {
+    display: flex;
+    justify-content: space-between;
+}
+
+.Contenedor-Nav .Logo {
+    display: flex;
+    align-items: center;
+    padding: 0px;
+}
+
+.Contenedor-Nav .UsuarioIcon {
+    display: flex;
+    align-items: center;
+    padding: 0px;
+}
+
+.Contenedor-Nav ul {
+    display: flex;
+    align-items: center;
+}
+
+.Contenedor-Nav ul a {
+    text-decoration: none;
+}
+
+.Contenedor-Nav ul a li {
+    color: #FFFFFF;
+    list-style: none;
+    padding: 0px 10px;
+    font-size: 16px;
+}
+
+.Contenedor-Nav ul a li:hover {
+    text-decoration: underline;
+}
+
+.Contenedor-Nav div a img {
+    margin-right: 25px;
+    width: 50px;
+}
+
+.Contenedor-Nav a img {
+    padding-left: 25px;
+    width: 130px;
+}
+

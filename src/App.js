@@ -12,7 +12,8 @@ function App() {
   return (
     <Router>
       <div className="Contenedor-app">
-        <Navbar />
+        <Navbar />     
+        
         <Route exact={ true } path="/Acerca de" component = { AcercaDe } />
         <Route exact={ true } path="/Docente" component = { PrincipalDocente }/>
         <Route exact={true} path="/Subir material" component={SubirMaterial}/>

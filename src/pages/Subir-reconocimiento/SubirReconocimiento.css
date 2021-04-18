@@ -3,14 +3,14 @@
     padding: 0px;
 }
 
-.contenedor-formulario {
+.contenedor-formulario-r {
     display: flex;
     justify-content: center;
     align-items: center;
-    margin-top: 70px;
+    margin-top: 40px;
 }
 
-.contenedor-formulario form {
+.contenedor-formulario-r form {
     width: 400px;
     display: flex;
     flex-direction: column;
@@ -21,7 +21,7 @@
     background-color: #3498DB;
 }
 
-.contenedor-formulario form input {
+.contenedor-formulario-r form input {
     width: 100%;
     margin-bottom: 20px;
     padding: 10px;
@@ -29,12 +29,12 @@
     border: 1px solid #D1D1D1;
 }
 
-.contenedor-formulario img {
+.contenedor-formulario-r img {
     width: 85px;
     margin-bottom: 20px;
 }
 
-.contenedor-formulario p {
+.contenedor-formulario-r p {
     color: #FFFFFF;
     margin-bottom: 20px;
 }

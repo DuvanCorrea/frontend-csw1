@@ -4,7 +4,7 @@ import "../../components/navbar/Navbar.css";
 import Logo from "../../images/Logo.svg";
 import UsuarioIcon from "../../images/UsuarioIcon.svg";
 
-export const Navbar = () => {
+export const NavbarDocente = () => {
   return (
     <>
       <nav className="Contenedor-Nav">
@@ -19,11 +19,11 @@ export const Navbar = () => {
         }
         <div className="Contenedor-menu">
           <ul className="nav-enlaces">
-            <Link to="/Acerca de">
-              <li>Acerca de</li>
+            <Link to="/Docente/Subir material">
+              <li>Subir información</li>
             </Link>
-            <Link to="/Materiales">
-              <li>Materiales</li>
+            <Link to="/Generar listados">
+              <li>Generar listados</li>
             </Link>
           </ul>
           {
@@ -38,4 +38,4 @@ export const Navbar = () => {
   );
 };
 
-export default Navbar;
+export default NavbarDocente;

@@ -1,0 +1,54 @@
+* {
+    margin: 0px;
+    padding: 0px;
+}
+
+.contenedor-docente {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 20px;
+}
+
+.contenedor-informacion {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+    padding: 30px;
+}
+
+.uno {
+    margin-right: 20px;
+}
+
+.dos {
+    margin-left: 20px;
+}
+
+.icon {
+    width: 180px;
+    margin-bottom: 10px;
+}
+
+.titulo {
+    opacity: 0.8;
+    font-size: 20px;
+    font-weight: bolder;
+    user-select: none;
+}
+
+.sub {
+    font-size: 16px;
+    user-select: none;
+}
+
+.enlaces-p {
+    opacity: 0.8;
+    font-size: 16px;
+    font-weight: normal;
+}
+
+.enlaces-p:hover {
+    text-decoration: underline;
+}

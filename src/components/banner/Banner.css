@@ -7,8 +7,10 @@
 .Contenedor-banner {
     height: 220px;
     width: 100%;
-    background-color: coral;
     overflow: hidden;
+    position: relative;
+    display: inline-block;
+    text-align: center;
 }
 
 .Contenedor-banner img {
@@ -30,4 +32,47 @@
     position: absolute;
     background-color: #1D567B;
     opacity: 0.8;
+}
+
+.texto-encima {
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    top: 0;
+    margin-top: 45px;
+    margin-left: 30px;
+}
+
+.boton-registrar {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 120px;
+    border-radius: 1px;
+    border: 1px solid #FFFFFF;
+    background-color: transparent;
+    color: #FFFFFF;
+    padding: 10PX;
+    margin-top: 15px;
+    cursor: pointer;
+}
+
+.boton-registrar:hover {
+    background-color: #F39C12;
+}
+
+.titulo-banner {
+    font-weight: bold;
+    font-size: 35px;
+    color: #FFFFFF;
+}
+
+.text {
+    text-align: left;
+    color: #FFFFFF;
+}
+
+.titulo-banner {
+    text-align: left;
 }

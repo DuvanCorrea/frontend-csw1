@@ -27,6 +27,7 @@
     padding: 10px;
     border-radius: 5px;
     border: 1px solid #D1D1D1;
+    outline: none;
 }
 
 .contenedor-formulario-r img {

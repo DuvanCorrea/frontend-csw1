@@ -14,25 +14,25 @@ const SubirMaterial = () => {
           <input
             type="text"
             name="nombre_docente"
-            className="browser-default"
+            className="browser-default input"
             placeholder="Nombre completo"
           />
           <input
             type="text"
             name="titulo_material"
-            className="browser-default"
+            className="browser-default input"
             placeholder="Nombre / titulo material"
           />
           <input
             type="text"
             name="ano"
-            className="browser-default"
+            className="browser-default input"
             placeholder="Año"
           />
           <input
             type="text"
             name="ubicacion"
-            className="browser-default"
+            className="browser-default input"
             placeholder="Ubicación del archvo link / url"
           />
           <button type="submit" className="btn">

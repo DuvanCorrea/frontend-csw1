@@ -18,7 +18,7 @@ const Banner = () => {
             </p>
             <Link to="/Registro usuario">
                 <button
-                className="browser-default"
+                className="browser-default boton-registrar"
                 >
                     Regitrarse
                 </button>

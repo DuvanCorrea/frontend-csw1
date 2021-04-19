@@ -19,14 +19,16 @@
     padding: 20px;
     border-radius: 5PX;
     background-color: #3498DB;
+    outline: none;
 }
 
-.contenedor-formulario form input {
+.input {
     width: 100%;
-    margin-bottom: 20px;
+    margin-bottom: 15px;
     padding: 10px;
     border-radius: 5px;
     border: 1px solid #D1D1D1;
+    outline: none;
 }
 
 .contenedor-formulario img {

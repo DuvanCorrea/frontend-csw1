@@ -7,6 +7,7 @@ import PrincipalDocente from "./pages/Principa _docente/PrincipalDocente";
 import Navbar from "./components/navbar/Navbar";
 import Principal from "./pages/Principal/Principal";
 import SubirMaterial from "./pages/Subir-material/SubirMaterial";
+import Login from "./pages/login/Login";
 
 function App() {
   return (
@@ -17,6 +18,7 @@ function App() {
         <Route exact={ true } path="/Acerca de" component = { AcercaDe } />
         <Route exact={ true } path="/Docente" component = { PrincipalDocente }/>
         <Route exact={true} path="/Subir material" component={SubirMaterial}/>
+        <Route exact={true} path="/Login_U" component={Login}/>
         <Route exact={true} path="/" component={Principal}/>
       </div>
     </Router>

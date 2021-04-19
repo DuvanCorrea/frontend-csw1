@@ -25,12 +25,12 @@ export const Navbar = () => {
             </Link>
             <Link to="/Materiales">
               <li>Materiales</li>
-            </Link>
+            </Link>            
           </ul>
           {
             //Enlace a usuario
           }
-          <Link to="/Acerca de" className="Usuario-icon">
+          <Link to="/Login_U" className="Usuario-icon">
             <img src={UsuarioIcon} alt="Usuario" className="UsuarioIcon" />
           </Link>
         </div>

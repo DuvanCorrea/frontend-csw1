@@ -24,7 +24,7 @@ function PerfilDocente() {
   return (
     <>
       <NavbarDocente />
-      <div className="contenedor-perfil">
+      <div className="contenedor-perfil" >
         <div className="contenedor-perfil-docente">
           <h2 className="titulos-perfil">Perfil docente</h2>
           <img src={UsuarioIcon} alt="Logo" />

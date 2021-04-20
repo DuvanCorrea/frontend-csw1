@@ -19,17 +19,14 @@ export const NavbarDocente = () => {
         }
         <div className="Contenedor-menu">
           <ul className="nav-enlaces">
-            <Link to="/Docente/Subir material">
-              <li>Subir información</li>
-            </Link>
-            <Link to="/Generar listados">
-              <li>Generar listados</li>
+            <Link to="/Acerca de">
+              <li>Acerca de</li>
             </Link>
           </ul>
           {
             //Enlace a usuario
           }
-          <Link to="/Acerca de" className="Usuario-icon">
+          <Link to="/Docente/Perfil docente" className="Usuario-icon">
             <img src={UsuarioIcon} alt="Usuario" className="UsuarioIcon" />
           </Link>
         </div>

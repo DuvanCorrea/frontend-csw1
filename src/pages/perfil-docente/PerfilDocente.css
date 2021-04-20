@@ -1,0 +1,42 @@
+* {
+    margin: 0px;
+    padding: 0px;
+}
+
+.contenedor-perfil {
+    display: flex;
+}
+
+.contenedor-perfil div h2, h3 {
+    font-size: 20px;
+    color: #000000;
+    font-weight: bolder;
+    display: flex;
+    justify-content: center;
+}
+
+.contenedor-perfil-docente {
+    background-color: #1D567B;
+    width: 20%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 100vh;
+}
+
+.contenedor-materiales {
+    width: 40%;
+}
+
+.contenedor-reconocimientos {
+    width: 40%;
+}
+
+.contenedor-perfil-docente img {
+    width: 80px;
+    margin-bottom: 15px;
+}
+
+.contenedor-perfil-docente p {
+    font-weight:normal;
+}

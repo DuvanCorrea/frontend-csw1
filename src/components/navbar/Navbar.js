@@ -2,7 +2,6 @@ import React from "react";
 import { Link } from "react-router-dom";
 import "../../components/navbar/Navbar.css";
 import Logo from "../../images/Logo.svg";
-import UsuarioIcon from "../../images/UsuarioIcon.svg";
 
 export const Navbar = () => {
   return (
@@ -29,8 +28,10 @@ export const Navbar = () => {
           {
             //Enlace a usuario
           }
-          <Link to="/Login_U" className="Usuario-icon">
-            <img src={UsuarioIcon} alt="Usuario" className="UsuarioIcon" />
+          <Link to="/Docente/Login_U" className="Usuario-icon">
+            <button type="submit" className="btn btn-inicio-secion">
+              Iniciar sesión
+            </button>
           </Link>
         </div>
       </nav>

@@ -70,3 +70,7 @@
     width: 110px;
 }
 
+.Contenedor-Nav .btn-inicio-secion {
+    border-radius: 0px;
+    margin-right: 25px;
+}

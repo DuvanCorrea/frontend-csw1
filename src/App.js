@@ -9,7 +9,7 @@ import SubirMaterial from "./pages/Subir-material/SubirMaterial";
 import Login from "./pages/login/Login";
 import SubirReconocimiento from './pages/Subir-reconocimiento/SubirReconocimiento';
 import RegistroUsuario from './pages/Registro-usuario/RegistroUsuario';
-
+import PerfilDocente from './pages/perfil-docente/PerfilDocente';
 
 function App() {
   return (
@@ -18,10 +18,11 @@ function App() {
 
         <Route exact={true} path="/Docente/Subir material" component={SubirMaterial} />
         <Route exact={true} path="/Docente/Subir reconocimiento" component={SubirReconocimiento}/>
+        <Route exact={true} path="/Docente/Login_U" component={Login}/>
+        <Route exact={true} path="/Docente/Perfil docente" component={PerfilDocente}/>
         <Route exact={true} path="/Registro usuario" component={RegistroUsuario} />
         <Route exact={true} path="/Acerca de" component={AcercaDe} />
         <Route exact={true} path="/Docente" component={PrincipalDocente} />
-        <Route exact={true} path="/Login_U" component={Login}/>
         <Route exact={true} path="/" component={Principal} />
 
       </div>

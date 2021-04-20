@@ -3,6 +3,7 @@ import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
 import Logo from "../../images/Logo.svg";
 import "./Login.css";
+import postDocenteLogin from "../../servicios/login";
 
 export default function Login() {
   const [email, setEmail] = useState("");
@@ -13,6 +14,28 @@ export default function Login() {
   }
 
   function handleSubmit(event) {
+    // console.log("hola")
+    // Hace peticion al servidor por medio del servicio creado
+    // -------------------------------------------------------
+
+    const credenciales = {
+      correo: email,
+      clave: password
+    }
+
+    // funcion auxiliar para hacer peticion, si no se usa 
+    // devolveria una peticion pendiente, pero usando
+    // async await se espera a que se resulva esa peticion
+    // y solomostrara la data cuando este lista
+    // ---------------------------------------------------
+
+    const aux = async () => {
+      const { data } = await postDocenteLogin({ credenciales })
+      console.log(data)
+    }
+
+    aux()
+
     event.preventDefault();
   }
 
@@ -41,10 +64,10 @@ export default function Login() {
               onChange={(e) => setPassword(e.target.value)}
             />
           </Form.Group>
-          <Button 
-          className="btn btn-ingresar" 
-          type="submit" 
-          disabled={!validateForm()}
+          <Button
+            className="btn btn-ingresar"
+            type="submit"
+            disabled={false}
           >
             Ingresar
           </Button>

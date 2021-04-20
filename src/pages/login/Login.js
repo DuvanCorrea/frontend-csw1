@@ -1,13 +1,21 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
 import Logo from "../../images/Logo.svg";
 import "./Login.css";
 import postDocenteLogin from "../../servicios/login";
+import { useHistory } from "react-router";
 
 export default function Login() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [valido, setValido] = useState(null)
+
+  const history = useHistory()
+
+  useEffect(() => {
+    setValido(null)
+  }, [])
 
   function handleSubmit(event) {
     // console.log("hola")
@@ -28,6 +36,15 @@ export default function Login() {
     const aux = async () => {
       const { data } = await postDocenteLogin({ credenciales })
       console.log(data)
+      if (data) {
+        if (data.valido === true) {
+          setValido(true)
+          history.push("/Docente")
+        }
+      } else {
+        setValido(false)
+      }
+
     }
 
     aux()
@@ -60,6 +77,7 @@ export default function Login() {
               onChange={(e) => setPassword(e.target.value)}
             />
           </Form.Group>
+          <p>{valido === null || valido ? <></> : <p>Correo o contraseña incorrectos</p>}</p>
           <Button
             className="btn btn-ingresar"
             type="submit"

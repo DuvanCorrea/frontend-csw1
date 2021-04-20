@@ -2,13 +2,19 @@ import React, { useEffect, useState } from "react";
 import NavbarDocente from "../../components/navbar_docente/NavbarDocente";
 import UsuarioIcon from "../../images/UsuarioIcon.svg";
 import getMateriales from "../../servicios/getMateriales";
+import getDocente from '../../servicios/getDocente';
+import getReconocimientos from '../../servicios/getReconocimientos';
 import Cards from '../../components/cards/Cards';
+import CardsReconocimietos from '../../components/cards/CardsReconocimietos';
 import "./PerfilDocente.css";
 
 //Lo que se renderisa
 function PerfilDocente() {
   const [vector, setVector] = useState([]);
+  const [vectorDocente, setvectorDocente] = useState([])
+  const [vectorReconocimiento, setvectorReconocimiento] = useState([])
 
+  //Trae los datos de materiales
   useEffect(() => {
     const aux = async () => {
       const { data } = await getMateriales();
@@ -19,18 +25,42 @@ function PerfilDocente() {
     aux();
   }, [setVector]);
 
-  console.log('este si',vector)
+  //Trae los datos de docente
+  useEffect(() => {
+    const onbtenerDocentes = async () => {
+      const { data } = await getDocente();
+      setvectorDocente(e => {
+        return data
+      });
+    };
+    onbtenerDocentes();
+  }, [setvectorDocente]);
+
+  //Trae los datos de reconocimientos
+  useEffect(() => {
+    const onbtenerDocentes = async () => {
+      const { data } = await getReconocimientos();
+      setvectorReconocimiento(e => {
+        return data
+      });
+    };
+    onbtenerDocentes();
+  }, [setvectorReconocimiento]);
+  
+
+  console.log('este si',vectorDocente)
 
   return (
     <>
       <NavbarDocente />
       <div className="contenedor-perfil" >
+        
         <div className="contenedor-perfil-docente">
           <h2 className="titulos-perfil">Perfil docente</h2>
           <img src={UsuarioIcon} alt="Logo" />
-          <p>Nombre: Jose Maria Castaño</p>
-          <p>Materia: Ciencisas Siciales</p>
-          <p>Enforque material: Animales</p>
+          <p><span>Nombre:</span> Jose Maria Castaño</p>
+          <p><span>Materia:</span> Ciencisas Siciales</p>
+          <p><span>Enforque material:</span> Animales</p>
           <p></p>
         </div>
       
@@ -43,11 +73,21 @@ function PerfilDocente() {
                 <Cards key={element.id}{...element}/>
               </div>
             )
-          })}
+          })
+          }
         </div>
 
         <div className="contenedor-reconocimientos">
           <h2>Reconocimientos</h2>
+          {
+            vectorReconocimiento.map((element) => {
+              return (
+                <div>
+                    <CardsReconocimietos key={element.id_reconocimiento}{...element}/>
+                </div>
+              )
+            })
+          }
         </div>
       </div>
     </>

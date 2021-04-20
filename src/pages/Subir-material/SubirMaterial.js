@@ -32,7 +32,7 @@ const SubirMaterial = () => {
     e.preventDefault();
 
     // Validacion
-    if(nombre_docente.trim()=='' || titulo_material.trim()=='' || ano.trim()=='' || ubicacion.trim()==''){
+    if(nombre_docente.trim()==='' || titulo_material.trim()==='' || ano.trim()==='' || ubicacion.trim()===''){
       actualizarError(true);
       return;
     }

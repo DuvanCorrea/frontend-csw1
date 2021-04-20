@@ -16,12 +16,12 @@
 }
 
 .contenedor-perfil-docente {
-    background-color: #1D567B;
+    background-color: #FFFFFF;
     width: 20%;
     display: flex;
     flex-direction: column;
     align-items: center;
-    height: 100vh;
+    margin: 5px;
 }
 
 .contenedor-materiales {
@@ -30,10 +30,20 @@
     flex-direction:column;
     justify-content: center;
     align-items: center;
+    margin-top: 5px;
+    background-color: #FFFFFF;
+    overflow-wrap:initial;
 }
 
 .contenedor-reconocimientos {
     width: 40%;
+    margin: 5px;
+    display: flex;
+    flex-direction:column;
+    justify-content: center;
+    align-items: center;
+    background-color: #FFFFFF;
+    overflow-wrap:initial;
 }
 
 .contenedor-perfil-docente img {
@@ -47,4 +57,12 @@
 
 .pe {
     color: #000000;
+}
+
+.contenedor-perfil span{
+    font-weight: bolder;
+}
+
+.contenedor-perfil-docente p {
+    text-align: left;
 }

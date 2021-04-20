@@ -1,13 +1,13 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import "../../components/navbar/Navbar.css";
 import Logo from "../../images/Logo.svg";
 import UsuarioIcon from "../../images/UsuarioIcon.svg";
+import '../navbar_docente/NavbarDocente.css';
 
 export const NavbarDocente = () => {
   return (
     <>
-      <nav className="Contenedor-Nav">
+      <nav className="Contenedor-Nav-docente">
         {
           //Enlace a inicio
         }

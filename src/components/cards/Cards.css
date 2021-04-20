@@ -33,3 +33,21 @@
 .Card .super {
     margin-top: 20px;
 }
+
+.Card .contenedor-info-cards-reco {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    font-size: 12px;
+    width: 100%;
+    padding: 15px;
+}
+
+.fecha {
+    text-align:right;
+}
+
+.reco {
+    height: 280px;
+}

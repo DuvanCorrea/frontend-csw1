@@ -4,7 +4,7 @@
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
-.Contenedor-Nav {
+.Contenedor-Nav-docente {
     background-color: #3498DB;
     display: flex;
     height: 70px;
@@ -13,59 +13,59 @@
     width: 100%;
 }
 
-.Contenedor-Nav div {
+.Contenedor-Nav-docente div {
     display: flex;
 }
 
-.Contenedor-Nav .Usuario-icon {
+.Contenedor-Nav-docente .Usuario-icon {
     display: flex;
     justify-content: center;
     align-items: center;
 }
 
-.Contenedor-Nav .nav-menu {
+.Contenedor-Nav-docente .nav-menu {
     display: flex;
     justify-content: space-between;
 }
 
-.Contenedor-Nav .Logo {
+.Contenedor-Nav-docente .Logo {
     display: flex;
     align-items: center;
     padding: 0px;
 }
 
-.Contenedor-Nav .UsuarioIcon {
+.Contenedor-Nav-docente .UsuarioIcon {
     display: flex;
     align-items: center;
     padding: 0px;
 }
 
-.Contenedor-Nav ul {
+.Contenedor-Nav-docente ul {
     display: flex;
     align-items: center;
 }
 
-.Contenedor-Nav ul a {
+.Contenedor-Nav-docente ul a {
     text-decoration: none;
 }
 
-.Contenedor-Nav ul a li {
+.Contenedor-Nav-docente ul a li {
     color: #FFFFFF;
     list-style: none;
     padding: 0px 10px;
     font-size: 16px;
 }
 
-.Contenedor-Nav ul a li:hover {
+.Contenedor-Nav-docente ul a li:hover {
     text-decoration: underline;
 }
 
-.Contenedor-Nav div a img {
+.Contenedor-Nav-docente div a img {
     margin-right: 25px;
     width: 50px;
 }
 
-.Contenedor-Nav a img {
+.Contenedor-Nav-docente a img {
     padding-left: 25px;
     width: 110px;
 }

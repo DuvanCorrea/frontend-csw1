@@ -15,7 +15,6 @@ const SubirReconocimiento = () => {
   const history = useHistory()
   const [reconocimiento, actualizarReconocimiento] = useState({
     persona_que_otorga: '',
-    persona_que_recibe: '',
     entidad_otorga: "",
     razon: "",
     anio_reconocimiento: ""
@@ -35,11 +34,8 @@ const SubirReconocimiento = () => {
 
     // Validacion
     if (reconocimiento.persona_que_otorga.trim() === ''
-      || reconocimiento.persona_que_recibe.trim() === ''
       || reconocimiento.entidad_otorga.trim() === ''
-      || reconocimiento.persona_que_recibe.trim() === ''
       || reconocimiento.razon.trim() === ''
-      || reconocimiento.persona_que_recibe.trim() === ''
       || reconocimiento.anio_reconocimiento.trim() === '') {
       actualizarError(true);
       return;
@@ -48,34 +44,28 @@ const SubirReconocimiento = () => {
     //eliminar mensaje de error
     actualizarError(false);
 
-    // crear JSON para enviar al back
-    // ------------------------------
-    const handleSubmit = () => {
+    if (error === false) {
+      // se contruye el objeto a enviar
+      // ------------------------------
 
-      if (error === false) {
-        // se contruye el objeto a enviar
-        // ------------------------------
-
-        const nuevoReconocimiento = {
-          id_docente: docente.id,
-          persona_que_otorga: reconocimiento.persona_que_otorga,
-          persona_que_recibe: docente.nombre,
-          entidad_otorga: reconocimiento.entidad_otorga,
-          razon: reconocimiento.razon,
-          anio_reconocimiento: reconocimiento.anio_reconocimiento
-        }
-
-
-        const aux = async () => {
-          const { data } = await postReconocimiento({ datos: nuevoReconocimiento })
-          console.log(data)
-        }
-        aux()
-      } else {
-        alert("error en true")
+      const nuevoReconocimiento = {
+        id_docente: docente.id,
+        persona_que_otorga: reconocimiento.persona_que_otorga,
+        persona_que_recibe: docente.nombre,
+        entidad_otorga: reconocimiento.entidad_otorga,
+        razon: reconocimiento.razon,
+        anio_reconocimiento: reconocimiento.anio_reconocimiento
       }
 
+      const aux = async () => {
+        const { data } = await postReconocimiento({ datos: nuevoReconocimiento })
+        console.log(data)
+      }
+      aux()
+    } else {
+      alert("error en true")
     }
+
   }
 
   if (docente === null || docente === undefined) {
@@ -121,9 +111,10 @@ const SubirReconocimiento = () => {
             onChange={handleChange}
             value={reconocimiento.anio_reconocimiento}
           />
-          <button type="submit" className="btn">
+          <button onClick={handleSubmit} type="submit" className="btn">
             Subir material
           </button>
+          {error ? <p>Debes llenar todos los campos</p> : null}
         </form>
       </div>
     </div>

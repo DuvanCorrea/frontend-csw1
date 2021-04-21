@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
 import Logo from "../../images/Logo.svg";
@@ -6,15 +6,19 @@ import "./Login.css";
 import postDocenteLogin from "../../servicios/login";
 import { useHistory } from "react-router";
 
+import docenteContext from "../../context/docenteContext";
+
 export default function Login() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [valido, setValido] = useState(null)
+  const [valido, setValido] = useState(null);
 
-  const history = useHistory()
+  const { setDocente } = useContext(docenteContext);
+
+  const history = useHistory();
 
   useEffect(() => {
-    setValido(null)
+    setValido(null);
   }, [])
 
   function handleSubmit(event) {
@@ -35,10 +39,23 @@ export default function Login() {
 
     const aux = async () => {
       const { data } = await postDocenteLogin({ credenciales })
-      console.log(data)
       if (data) {
         if (data.valido === true) {
           setValido(true)
+
+          // en la siguiente linea de codigo de guarda el docente 
+          // en un estado global con el sigiente formato
+          // {
+          //   id,
+          //   nombre,
+          //   correo,
+          //   nacimiento,
+          //   areas,
+          //   materia,
+          // }
+          // ----------------------------------------------------
+          setDocente(data.docente)
+
           history.push("/Docente")
         } else {
           setValido(false)

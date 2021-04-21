@@ -1,11 +1,22 @@
-import React from "react";
+import React, { useEffect, useContext } from "react";
 import { Link } from "react-router-dom";
+
 import IconoSubirMaterial from "../../images/IconoSubirMaterial.svg";
 import Banner from "../../components/banner/Banner";
 import NavbarDocente from '../../components/navbar_docente/NavbarDocente';
 import "./PrincipalDocente.css";
 
+import docenteContext from "../../context/docenteContext";
+
+
 const PrincipalDocente = () => {
+
+  const { docente } = useContext(docenteContext)
+
+  useEffect(() => {
+    console.log("doc", docente)
+  }, [])
+
   return (
     <>
       <NavbarDocente />

@@ -49,13 +49,7 @@ const Principal = () => {
       <Navbar />
       <Banner />
       <p className="Sub-titulo">Materiales Publicados</p>
-<<<<<<< HEAD
       {/* <Carrusel /> */}
-=======
-      {
-        vectorMaterial.length > 0 ?  <Carrusel vectorMaterial={vectorMaterial}/> : null
-      }
->>>>>>> 6a293e28f4da8f83a2c4651030fa4f911762e7d5
     </>
   );
 };

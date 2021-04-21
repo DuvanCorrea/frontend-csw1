@@ -40,6 +40,8 @@ export default function Login() {
         if (data.valido === true) {
           setValido(true)
           history.push("/Docente")
+        } else {
+          setValido(false)
         }
       } else {
         setValido(false)

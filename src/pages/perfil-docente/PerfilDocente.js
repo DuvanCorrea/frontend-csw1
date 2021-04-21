@@ -15,35 +15,38 @@ function PerfilDocente() {
   const [vector, setVector] = useState([]);
   const [vectorReconocimiento, setvectorReconocimiento] = useState([]);
 
-  const { setDocente } = useContext(docenteContext)
+  const { docente, setDocente } = useContext(docenteContext)
   const history = useHistory()
 
   //Trae los datos de materiales
   useEffect(() => {
     const aux = async () => {
       const { data } = await getMateriales();
-      setVector((e) => {
-        return data;
-      });
+      setVector(data);
     };
     aux();
+
   }, [setVector]);
 
   //Trae los datos de reconocimientos
   useEffect(() => {
     const aux = async () => {
       const { data } = await getReconocimientos();
-      setvectorReconocimiento((e) => {
-        return data;
-      });
+      setvectorReconocimiento(data);
     };
     aux();
+
   }, [setvectorReconocimiento]);
 
   const cerrarSesion = () => {
     setDocente(null)
     history.push("/")
   }
+
+  if (docente === null || docente === undefined) {
+    history.push("/Docente/Login_U")
+  }
+
 
   return (
     <>
@@ -79,19 +82,19 @@ function PerfilDocente() {
         <div className="c">
           <h2>Materiales diseñados</h2>
           <div className="contenedor-materiales">
-            {vector.map((element_reco) => {
+            {vector ? vector.map((element_reco) => {
               return (
                 <div>
                   <Cards key={element_reco.id} {...element_reco} />
                 </div>
               );
-            })}
+            }) : <></>}
           </div>
         </div>
         <div className="c">
           <h2>Reconocimientos</h2>
           <div className="contenedor-reconocimientos">
-            {vectorReconocimiento.map((element) => {
+            {vectorReconocimiento ? vectorReconocimiento.map((element) => {
               return (
                 <div>
                   <CardsReconocimietos
@@ -100,7 +103,7 @@ function PerfilDocente() {
                   />
                 </div>
               );
-            })}
+            }) : <></>}
           </div>
         </div>
       </div>

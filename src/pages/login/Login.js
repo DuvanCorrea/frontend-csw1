@@ -13,7 +13,7 @@ export default function Login() {
   const [password, setPassword] = useState("");
   const [valido, setValido] = useState(null);
 
-  const { setDocente } = useContext(docenteContext);
+  const { docente, setDocente } = useContext(docenteContext);
 
   const history = useHistory();
 
@@ -69,6 +69,12 @@ export default function Login() {
     aux()
 
     event.preventDefault();
+  }
+
+  console.log(docente)
+
+  if (docente && docente.id) {
+    history.push("/Docente")
   }
 
   return (

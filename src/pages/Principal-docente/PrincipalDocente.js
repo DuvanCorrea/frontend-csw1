@@ -1,5 +1,5 @@
-import React, { useEffect, useContext } from "react";
-import { Link } from "react-router-dom";
+import React, { useContext } from "react";
+import { Link, useHistory } from "react-router-dom";
 
 import IconoSubirMaterial from "../../images/IconoSubirMaterial.svg";
 import Banner from "../../components/banner/Banner";
@@ -12,10 +12,11 @@ import docenteContext from "../../context/docenteContext";
 const PrincipalDocente = () => {
 
   const { docente } = useContext(docenteContext)
+  const history = useHistory();
 
-  useEffect(() => {
-    console.log("doc", docente)
-  }, [])
+  if (docente === null || docente === undefined) {
+    history.push("/Docente/Login_U")
+  }
 
   return (
     <>

@@ -4,14 +4,22 @@ import uuid from 'uuid/dist/v4';
 import "./SubirMaterial.css";
 import NavbarDocente from "../../components/navbar_docente/NavbarDocente";
 
+import docenteContext from "../../context/docenteContext"
+import { useContext } from 'react';
+import { useHistory } from 'react-router';
+import { useEffect } from 'react';
+import postMaterial from '../../servicios/postMaterial';
+
 const SubirMaterial = () => {
+
+  const { docente } = useContext(docenteContext)
+  const history = useHistory()
 
   //Creo state de material
   const [material, actualizarMaterial] = useState({
-    nombre_docente: '',
     titulo_material: '',
-    ano: '',
-    ubicacion: ''
+    materialDoc: '',
+    fecha_material: ""
   });
 
   const [error, actualizarError] = useState(false);
@@ -19,33 +27,66 @@ const SubirMaterial = () => {
   //Función que se ejecuta cada que el usuario escribe en un input
   const handleChange = e => {
     actualizarMaterial({
-      ...material, 
+      ...material,
       [e.target.name]: e.target.value
     })
   }
 
   //Extraer datos y darle el avlor al input
-  const {nombre_docente, titulo_material, ano, ubicacion} = material;
+  const { titulo_material, fecha_material, materialDoc } = material;
 
   //Cuando el docente presiona agregar cita
   const SubmitMaterial = e => {
     e.preventDefault();
 
     // Validacion
-    if(nombre_docente.trim()==='' || titulo_material.trim()==='' || ano.trim()==='' || ubicacion.trim()===''){
+    if (titulo_material.trim() === '' || fecha_material.trim() === '' || materialDoc.trim() === '') {
       actualizarError(true);
       return;
     }
 
     //eliminar mensaje de error
     actualizarError(false);
-    
+
     // Asignar un ID
     material.id = uuid();
 
     // Reiniciar el formulario
-    
 
+
+  }
+
+  // Enviar formularo al back
+  // ------------------------
+
+  const handleSubmit = () => {
+
+    if (error === false) {
+      // se contruye el objeto a enviar
+      // ------------------------------
+
+      const nuevoMaterial = {
+        titulo_material: titulo_material,
+        material: materialDoc,
+        fecha_material: fecha_material + " " + "00:00:00",
+        DOCENTES_id_docente: docente.id,
+        publicado: true
+      }
+
+      const aux = async () => {
+        const { data } = await postMaterial({ datos: nuevoMaterial })
+        console.log(data)
+      }
+      aux()
+    } else {
+      alert("error en true")
+    }
+
+
+  }
+
+  if (docente === null || docente === undefined) {
+    history.push("/Docente/Login_U")
   }
 
   return (
@@ -53,19 +94,12 @@ const SubirMaterial = () => {
       <NavbarDocente />
       <div className="contenedor-formulario">
         <form
-        onSubmit={SubmitMaterial} 
-        className="browser-default form"
+          onSubmit={SubmitMaterial}
+          className="browser-default form"
         >
           <img src={Logo} alt="Logo" />
           <p>Subir material diseñado</p>
-          <input
-            type="text"
-            name="nombre_docente"
-            className="browser-default input"
-            placeholder="Nombre completo"
-            onChange={handleChange}
-            value={nombre_docente}
-          />
+
           <input
             type="text"
             name="titulo_material"
@@ -75,25 +109,27 @@ const SubirMaterial = () => {
             value={titulo_material}
           />
           <input
-            type="text"
-            name="ano"
+            type="date"
+            name="fecha_material"
             className="browser-default input"
-            placeholder="Año"
+            placeholder="Fecha del material"
             onChange={handleChange}
-            value={ano}
+            value={fecha_material}
           />
           <input
             type="text"
-            name="ubicacion"
+            name="materialDoc"
             className="browser-default input"
             placeholder="Ubicación del archvo link / url"
             onChange={handleChange}
-            value={ubicacion}
+            value={materialDoc}
           />
-          <button type="submit" className="btn">
+          <button onClick={() => {
+            handleSubmit()
+          }} type="submit" className="btn">
             Subir material
           </button>
-          {error ? <p>Debes llenar todos los campos</p>:null}
+          {error ? <p>Debes llenar todos los campos</p> : null}
         </form>
       </div>
     </>

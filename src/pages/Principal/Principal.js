@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useContext } from "react";
-import Carrusel from "../../components/carrusel/Carrusel";
+// import Carrusel from "../../components/carrusel/Carrusel";
 import Banner from "../../components/banner/Banner";
 import Navbar from "../../components/navbar/Navbar";
 import docenteContext from "../../context/docenteContext"

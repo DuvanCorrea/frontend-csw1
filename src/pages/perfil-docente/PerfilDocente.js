@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import NavbarDocente from "../../components/navbar_docente/NavbarDocente";
 import UsuarioIcon from "../../images/UsuarioIcon.svg";
 import getMateriales from "../../servicios/getMateriales";
@@ -7,10 +7,16 @@ import Cards from "../../components/cards/Cards";
 import CardsReconocimietos from "../../components/cards/CardsReconocimietos";
 import "./PerfilDocente.css";
 
+import docenteContext from "../../context/docenteContext";
+import { useHistory } from "react-router";
+
 //Lo que se renderisa
 function PerfilDocente() {
   const [vector, setVector] = useState([]);
   const [vectorReconocimiento, setvectorReconocimiento] = useState([]);
+
+  const { setDocente } = useContext(docenteContext)
+  const history = useHistory()
 
   //Trae los datos de materiales
   useEffect(() => {
@@ -34,6 +40,11 @@ function PerfilDocente() {
     aux();
   }, [setvectorReconocimiento]);
 
+  const cerrarSesion = () => {
+    setDocente(null)
+    history.push("/")
+  }
+
   return (
     <>
       <NavbarDocente />
@@ -56,6 +67,11 @@ function PerfilDocente() {
             </button>
             <button className="btn btn-cards btn-perfil">
               Ver reconocimientos
+            </button>
+            <button onClick={() => {
+              cerrarSesion()
+            }} className="btn btn-cards btn-perfil">
+              Cerrar Sesion
             </button>
           </div>
         </div>

@@ -37,6 +37,7 @@ export const NavbarDocente = () => {
           <Link to="/Docente/Perfil docente" className="Usuario-icon">
             <img src={UsuarioIcon} alt="Usuario" className="UsuarioIcon" />
           </Link>
+
         </div>
       </nav>
     </>

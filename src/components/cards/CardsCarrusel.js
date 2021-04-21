@@ -1,7 +1,7 @@
 import React from "react";
 import "./Cards.css";
 
-const Cards = ({
+const CardsCarrusel = ({
   titulo_material,
   link_material,
   fecha_material,
@@ -9,7 +9,7 @@ const Cards = ({
 }) => {
   return (
     <>
-      <div className="Card">
+      <div className="Card cards-carrusel">
         <div className="contenedor-info-cards">
           <p className="info-card">
             <span>Titulo:</span> {titulo_material}{" "}
@@ -31,4 +31,4 @@ const Cards = ({
   );
 };
 
-export default Cards;
+export default CardsCarrusel;

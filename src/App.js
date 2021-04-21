@@ -17,7 +17,6 @@ function App() {
     <Router>
       <DocenteProvider>
         <div className="Contenedor-app">
-
           <Route exact={true} path="/Docente/Subir material" component={SubirMaterial} />
           <Route exact={true} path="/Docente/Subir reconocimiento" component={SubirReconocimiento} />
           <Route exact={true} path="/Docente/Login_U" component={Login} />
@@ -26,7 +25,6 @@ function App() {
           <Route exact={true} path="/Acerca de" component={AcercaDe} />
           <Route exact={true} path="/Docente" component={PrincipalDocente} />
           <Route exact={true} path="/" component={Principal} />
-
         </div>
       </DocenteProvider>
     </Router>

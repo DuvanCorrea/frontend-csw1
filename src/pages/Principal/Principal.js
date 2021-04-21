@@ -20,7 +20,7 @@ const Principal = () => {
       <Navbar />
       <Banner />
       <p className="Sub-titulo">Materiales Publicados</p>
-      <Carrusel />
+      {/* <Carrusel /> */}
     </>
   );
 };

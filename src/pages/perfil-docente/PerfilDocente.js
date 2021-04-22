@@ -12,26 +12,28 @@ import { useHistory } from "react-router";
 
 //Lo que se renderisa
 function PerfilDocente() {
-  const [vector, setVector] = useState([]);
+  const [vectorMaterial, setVectorMateriales] = useState([]);
   const [vectorReconocimiento, setvectorReconocimiento] = useState([]);
 
-  const { docente, setDocente } = useContext(docenteContext)
+  const { docente, setDocente, setMateriales, setReconocimientos } = useContext(docenteContext)
   const history = useHistory()
 
   //Trae los datos de materiales
   useEffect(() => {
     const aux = async () => {
       const { data } = await getMateriales();
-      setVector(data);
+      setMateriales(data)
+      setVectorMateriales(data);
     };
     aux();
 
-  }, [setVector]);
+  }, [setVectorMateriales]);
 
   //Trae los datos de reconocimientos
   useEffect(() => {
     const aux = async () => {
       const { data } = await getReconocimientos();
+      setReconocimientos(data)
       setvectorReconocimiento(data);
     };
     aux();
@@ -82,10 +84,10 @@ function PerfilDocente() {
         <div className="c">
           <h2>Materiales diseñados</h2>
           <div className="contenedor-materiales">
-            {vector ? vector.map((element_reco) => {
+            {vectorMaterial ? vectorMaterial.map((e) => {
               return (
                 <div>
-                  <Cards key={element_reco.id} {...element_reco} />
+                  <Cards key={e.id} {...e} />
                 </div>
               );
             }) : <></>}

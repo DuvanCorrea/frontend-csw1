@@ -9,7 +9,7 @@ export const DocenteProvider = ({ children }) => {
     // ----------------------------------------
 
     const [materiales, setMateriales] = useState([]);
-    const [reconocminetos, setReconocimiento] = useState([]);
+    const [reconocminetos, setReconocimientos] = useState([]);
     const [docente, setDocente] = useState();
 
 
@@ -19,7 +19,7 @@ export const DocenteProvider = ({ children }) => {
     return (
         <docenteContext.Provider
             value={{
-                materiales, setMateriales, reconocminetos, setReconocimiento, docente, setDocente
+                materiales, setMateriales, reconocminetos, setReconocimientos, docente, setDocente
             }}
         >
             {children}

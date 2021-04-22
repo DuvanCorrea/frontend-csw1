@@ -7,7 +7,6 @@ import NavbarDocente from "../../components/navbar_docente/NavbarDocente";
 import docenteContext from "../../context/docenteContext"
 import { useContext } from 'react';
 import { useHistory } from 'react-router';
-import { useEffect } from 'react';
 import postMaterial from '../../servicios/postMaterial';
 
 const SubirMaterial = () => {
@@ -68,7 +67,7 @@ const SubirMaterial = () => {
       const nuevoMaterial = {
         titulo_material: titulo_material,
         material: materialDoc,
-        fecha_material: fecha_material + " " + "00:00:00",
+        fecha_material: fecha_material,
         DOCENTES_id_docente: docente.id,
         publicado: true
       }

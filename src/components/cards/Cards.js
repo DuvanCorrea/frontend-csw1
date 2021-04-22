@@ -5,7 +5,7 @@ const Cards = ({
   titulo_material,
   link_material,
   fecha_material,
-  link_archivo_material
+  publicado
 }) => {
   return (
     <>
@@ -15,16 +15,18 @@ const Cards = ({
             <span>Titulo:</span> {titulo_material}{" "}
           </p>
           <p className="info-card">
-            <span>Docente:</span> {link_archivo_material}{" "}
+            <span>Link de descarga:</span> {link_material}{" "}
           </p>
           <p className="info-card">
             <span>Año:</span> {fecha_material}{" "}
           </p>
           <p className="info-card">
-            <span>Ubicación:</span> {link_material}{" "}
+            <span>Publicado:</span> {publicado ? "SI" : "NO"}{" "}
           </p>
-          <button className="btn btn-cards superc">Publicar material</button>
-          <button className="btn btn-cards">Gestionar material</button>
+          <button className="btn btn-cards superc">Eliminar</button>
+          <button className="btn btn-cards superc">Editar</button>
+          {publicado ? <></> : <button className="btn btn-cards superc">Publicar</button>}
+          <button className="btn btn-cards superc">Ver</button>
         </div>
       </div>
     </>

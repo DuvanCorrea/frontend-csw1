@@ -1,6 +1,5 @@
-import React, { Fragment, useState } from 'react';
+import React, { useState } from 'react';
 import Logo from "../../images/Logo.svg";
-import uuid from 'uuid/dist/v4';
 import "./SubirMaterial.css";
 import NavbarDocente from "../../components/navbar_docente/NavbarDocente";
 
@@ -25,10 +24,27 @@ const SubirMaterial = () => {
 
   //Función que se ejecuta cada que el usuario escribe en un input
   const handleChange = e => {
-    actualizarMaterial({
-      ...material,
-      [e.target.name]: e.target.value
-    })
+
+    console.log(e.target.files[0])
+
+    if (e.target.files) {
+
+      const aux = new FormData()
+      aux.append("material", e.target.files[0])
+
+      actualizarMaterial({
+        ...material,
+        [e.target.name]: aux
+      })
+
+    } else {
+
+      actualizarMaterial({
+        ...material,
+        [e.target.name]: e.target.value
+      })
+
+    }
   }
 
   //Extraer datos y darle el avlor al input
@@ -47,17 +63,10 @@ const SubirMaterial = () => {
     //eliminar mensaje de error
     actualizarError(false);
 
-    // Asignar un ID
-    material.id = uuid();
-
-    // Reiniciar el formulario
-
-
   }
 
   // Enviar formularo al back
   // ------------------------
-
   const handleSubmit = () => {
 
     if (error === false) {
@@ -80,7 +89,6 @@ const SubirMaterial = () => {
     } else {
       alert("error en true")
     }
-
 
   }
 
@@ -116,7 +124,7 @@ const SubirMaterial = () => {
             value={fecha_material}
           />
           <input
-            type="text"
+            type="file"
             name="materialDoc"
             className="browser-default input"
             placeholder="Ubicación del archvo link / url"

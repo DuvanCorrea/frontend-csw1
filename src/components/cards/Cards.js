@@ -1,12 +1,43 @@
 import React from "react";
+import { useContext } from "react";
+import docenteContext from "../../context/docenteContext";
+import deleteMaterial from "../../servicios/deleteMaterial";
 import "./Cards.css";
 
 const Cards = ({
+  id,
   titulo_material,
   link_material,
   fecha_material,
   publicado
 }) => {
+
+  const { materiales, setMateriales } = useContext(docenteContext)
+
+  const eliminarMaterial = ({ target }) => {
+
+    // Se toma el id del material a eliminar
+    // -------------------------------------
+    console.log(target.name)
+
+
+    // Se borra el material del estado global
+    // donde se guardaron al cargar la pagina 
+    // del docente
+    // --------------------------------------
+    const arrayAux = materiales.filter(e => e.id.toString() !== target.name.toString())
+
+    setMateriales(arrayAux)
+
+    // se envia la peticion de eliminacionde la base de datos
+    // ------------------------------------------------------
+    const aux = async () => {
+      const { data } = deleteMaterial({ id_material: id })
+    }
+    aux()
+
+  }
+
   return (
     <>
       <div className="Card">
@@ -23,10 +54,14 @@ const Cards = ({
           <p className="info-card">
             <span>Publicado:</span> {publicado ? "SI" : "NO"}{" "}
           </p>
-          <button className="btn btn-cards superc">Eliminar</button>
-          <button className="btn btn-cards superc">Editar</button>
+          <button onClick={(e) => {
+            eliminarMaterial(e)
+          }}
+            className="btn btn-cards superc"
+            name={id}>Eliminar</button>
+          <button name={id} className="btn btn-cards superc">Editar</button>
           {publicado ? <></> : <button className="btn btn-cards superc">Publicar</button>}
-          <button className="btn btn-cards superc">Ver</button>
+          <button name={id} className="btn btn-cards superc">Ver</button>
         </div>
       </div>
     </>

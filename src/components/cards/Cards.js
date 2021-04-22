@@ -1,4 +1,5 @@
 import React from "react";
+import { useState } from "react";
 import { useContext } from "react";
 import docenteContext from "../../context/docenteContext";
 import deleteMaterial from "../../servicios/deleteMaterial";
@@ -12,9 +13,12 @@ const Cards = ({
   publicado
 }) => {
 
+  const [cargando, setCargando] = useState(false)
   const { materiales, setMateriales } = useContext(docenteContext)
 
   const eliminarMaterial = ({ target }) => {
+
+    setCargando(true)
 
     // Se toma el id del material a eliminar
     // -------------------------------------
@@ -32,10 +36,15 @@ const Cards = ({
     // se envia la peticion de eliminacionde la base de datos
     // ------------------------------------------------------
     const aux = async () => {
-      const { data } = deleteMaterial({ id_material: id })
+      const { data } = await deleteMaterial({ id_material: id })
+      setCargando(false)
     }
     aux()
 
+  }
+
+  if (cargando) {
+    return <div>cargando...</div>
   }
 
   return (

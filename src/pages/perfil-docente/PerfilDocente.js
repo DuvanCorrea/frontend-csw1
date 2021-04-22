@@ -15,7 +15,7 @@ function PerfilDocente() {
   const [vectorMaterial, setVectorMateriales] = useState([]);
   const [vectorReconocimiento, setvectorReconocimiento] = useState([]);
 
-  const { docente, setDocente, setMateriales, setReconocimientos } = useContext(docenteContext)
+  const { docente, setDocente, setMateriales, setReconocimientos, materiales } = useContext(docenteContext)
   const history = useHistory()
 
   //Trae los datos de materiales
@@ -84,7 +84,7 @@ function PerfilDocente() {
         <div className="c">
           <h2>Materiales diseñados</h2>
           <div className="contenedor-materiales">
-            {vectorMaterial ? vectorMaterial.map((e) => {
+            {materiales ? materiales.map((e) => {
               return (
                 <div>
                   <Cards key={e.id} {...e} />

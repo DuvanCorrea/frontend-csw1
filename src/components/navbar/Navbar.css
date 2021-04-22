@@ -7,7 +7,7 @@
 .Contenedor-Nav {
     background-color: #3498DB;
     display: flex;
-    height: 60px;
+    height: 50px;
     justify-content: space-between;
     align-items: center;
     width: 100%;
@@ -66,8 +66,8 @@
 }
 
 .Contenedor-Nav a img {
-    padding-left: 25px;
-    width: 110px;
+    padding-left: 50px;
+    width: 100px;
 }
 
 .Contenedor-Nav .btn-inicio-secion {

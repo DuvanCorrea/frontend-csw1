@@ -27,7 +27,7 @@ const Cards = ({
   }
 
   const [cargando, setCargando] = useState(false)
-  const { materiales, setMateriales, setMaterial } = useContext(docenteContext)
+  const { docente, materiales, setMateriales, setMaterial } = useContext(docenteContext)
 
   const eliminarMaterial = ({ target }) => {
 
@@ -83,16 +83,16 @@ const Cards = ({
             <span>Año:</span> {fecha_material}{" "}
           </p>
           <p className="info-card">
-            <span>Publicado:</span> {publicado ? "SI" : "NO"}{" "}
+            {docente ? <><span>Publicado:</span> {publicado ? "SI" : "NO"}{" "}</> : ""}
           </p>
-          <button onClick={(e) => {
+          {docente ? <><button onClick={(e) => {
             eliminarMaterial(e)
           }}
             className="btn btn-cards superc"
-            name={id}>Eliminar</button>
-          <button name={id} className="btn btn-cards superc">Editar</button>
+            name={id}>Eliminar</button></> : ""}
+          {docente ? <button name={id} className="btn btn-cards superc">Editar</button> : ""}
 
-          {publicado ? <></> : <button className="btn btn-cards superc">Publicar</button>}
+          {docente ? <>{publicado ? <></> : <button className="btn btn-cards superc">Publicar</button>}</> : ""}
 
           <a className="btn btn-cards superc"
             href={`${API_URL}/api/material/documento/${nombre_documento}`}>Descargar</a>

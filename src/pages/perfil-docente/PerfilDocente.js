@@ -1,5 +1,6 @@
 import React, { useContext, useEffect, useState } from "react";
 import NavbarDocente from "../../components/navbar_docente/NavbarDocente";
+import NavbarNormal from "../../components/navbar/Navbar";
 import UsuarioIcon from "../../images/UsuarioIcon.svg";
 import getMateriales from "../../servicios/getMateriales";
 import getReconocimientos from "../../servicios/getReconocimientos";
@@ -45,14 +46,11 @@ function PerfilDocente() {
     history.push("/")
   }
 
-  if (docente === null || docente === undefined) {
-    history.push("/Docente/Login_U")
-  }
-
 
   return (
     <>
-      <NavbarDocente />
+      {docente ? <NavbarDocente /> : <NavbarNormal />}
+
       <div className="contenedor-perfil">
         <div className="contenedor-perfil-docente">
           <h2 className="titulos-perfil">Perfil docente</h2>
@@ -73,11 +71,11 @@ function PerfilDocente() {
             <button className="btn btn-cards btn-perfil">
               Ver reconocimientos
             </button>
-            <button onClick={() => {
+            {docente ? <button onClick={() => {
               cerrarSesion()
             }} className="btn btn-cards btn-perfil">
               Cerrar Sesion
-            </button>
+            </button> : ""}
           </div>
         </div>
 

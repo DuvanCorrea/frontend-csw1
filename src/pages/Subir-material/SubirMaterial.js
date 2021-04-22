@@ -7,6 +7,7 @@ import docenteContext from "../../context/docenteContext"
 import { useContext } from 'react';
 import { useHistory } from 'react-router';
 import postMaterial from '../../servicios/postMaterial';
+import postDocumento from '../../servicios/postReconocimiento';
 
 const SubirMaterial = () => {
 
@@ -79,6 +80,7 @@ const SubirMaterial = () => {
 
       const aux = async () => {
         const { data } = await postMaterial({ datos: nuevoMaterial })
+        postDocumento({ id_material: data.id, material: a })
       }
       aux()
     } else {

@@ -12,11 +12,12 @@ const SubirMaterial = () => {
 
   const { docente } = useContext(docenteContext)
   const history = useHistory()
+  const [a, setA] = useState()
 
   //Creo state de material
   const [material, actualizarMaterial] = useState({
     titulo_material: '',
-    materialDoc: '',
+    materialDoc: "",
     fecha_material: ""
   });
 
@@ -25,17 +26,12 @@ const SubirMaterial = () => {
   //Función que se ejecuta cada que el usuario escribe en un input
   const handleChange = e => {
 
-    console.log(e.target.files[0])
-
     if (e.target.files) {
 
       const aux = new FormData()
       aux.append("material", e.target.files[0])
 
-      actualizarMaterial({
-        ...material,
-        [e.target.name]: aux
-      })
+      setA(aux)
 
     } else {
 
@@ -75,7 +71,7 @@ const SubirMaterial = () => {
 
       const nuevoMaterial = {
         titulo_material: titulo_material,
-        material: materialDoc,
+        material: a,
         fecha_material: fecha_material,
         DOCENTES_id_docente: docente.id,
         publicado: true
@@ -83,7 +79,6 @@ const SubirMaterial = () => {
 
       const aux = async () => {
         const { data } = await postMaterial({ datos: nuevoMaterial })
-        console.log(data)
       }
       aux()
     } else {
@@ -129,7 +124,6 @@ const SubirMaterial = () => {
             className="browser-default input"
             placeholder="Ubicación del archvo link / url"
             onChange={handleChange}
-            value={materialDoc}
           />
           <button onClick={() => {
             handleSubmit()

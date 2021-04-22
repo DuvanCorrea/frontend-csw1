@@ -10,6 +10,7 @@ import Login from "./pages/login/Login";
 import SubirReconocimiento from './pages/Subir-reconocimiento/SubirReconocimiento';
 import RegistroUsuario from './pages/Registro-usuario/RegistroUsuario';
 import PerfilDocente from './pages/perfil-docente/PerfilDocente';
+import VerMaterial from './pages/verMaterial/verMaterial';
 import { DocenteProvider } from "./context/docenteContext";
 
 function App() {
@@ -22,6 +23,7 @@ function App() {
           <Route exact={true} path="/Docente/Login_U" component={Login} />
           <Route exact={true} path="/Docente/Perfil docente" component={PerfilDocente} />
           <Route exact={true} path="/Registro usuario" component={RegistroUsuario} />
+          <Route exact={true} path="/ver material" component={VerMaterial} />
           <Route exact={true} path="/Acerca de" component={AcercaDe} />
           <Route exact={true} path="/Docente" component={PrincipalDocente} />
           <Route exact={true} path="/" component={Principal} />

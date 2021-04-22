@@ -7,7 +7,7 @@
 .Contenedor-Nav-docente {
     background-color: #3498DB;
     display: flex;
-    height: 70px;
+    height: 45px;
     justify-content: space-between;
     align-items: center;
     width: 100%;
@@ -21,6 +21,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    color: #3498DB;
 }
 
 .Contenedor-Nav-docente .nav-menu {
@@ -66,7 +67,7 @@
 }
 
 .Contenedor-Nav-docente a img {
-    padding-left: 25px;
-    width: 110px;
+    padding-left: 50px;
+    width: 100px;
 }
 

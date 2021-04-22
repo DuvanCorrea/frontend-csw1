@@ -3,6 +3,8 @@ import { useState } from "react";
 import { useContext } from "react";
 import docenteContext from "../../context/docenteContext";
 import deleteMaterial from "../../servicios/deleteMaterial";
+import getDocumento from "../../servicios/getDocumento";
+import { API_URL } from "../../servicios/config"
 import "./Cards.css";
 
 const Cards = ({
@@ -10,8 +12,15 @@ const Cards = ({
   titulo_material,
   link_material,
   fecha_material,
-  publicado
+  publicado,
+  link_archivo_material
 }) => {
+
+  let nombre_documento = ""
+
+  if (link_archivo_material) {
+    nombre_documento = link_archivo_material.split("/")[link_archivo_material.split("/").length - 1]
+  }
 
   const [cargando, setCargando] = useState(false)
   const { materiales, setMateriales } = useContext(docenteContext)
@@ -36,11 +45,17 @@ const Cards = ({
     // se envia la peticion de eliminacionde la base de datos
     // ------------------------------------------------------
     const aux = async () => {
-      const { data } = await deleteMaterial({ id_material: id })
+      await deleteMaterial({ id_material: id })
       setCargando(false)
     }
     aux()
 
+  }
+
+  // Ver documento
+  // -------------
+  const verDocumento = () => {
+    window.open("/material/documento/" + nombre_documento)
   }
 
   if (cargando) {
@@ -69,10 +84,18 @@ const Cards = ({
             className="btn btn-cards superc"
             name={id}>Eliminar</button>
           <button name={id} className="btn btn-cards superc">Editar</button>
+
           {publicado ? <></> : <button className="btn btn-cards superc">Publicar</button>}
-          <button name={id} className="btn btn-cards superc">Ver</button>
+
+          <a className="btn btn-cards superc"
+            href={`${API_URL}/api/material/documento/${nombre_documento}`}>Descargar</a>
+
+          <button onClick={() => {
+            verDocumento()
+          }} name={id} className="btn btn-cards superc">Ver</button>
         </div>
       </div>
+
     </>
   );
 };

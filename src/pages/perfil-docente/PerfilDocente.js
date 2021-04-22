@@ -84,7 +84,7 @@ function PerfilDocente() {
         <div className="c">
           <h2>Materiales diseñados</h2>
           <div className="contenedor-materiales">
-            {materiales ? materiales.map((e) => {
+            {materiales ? vectorMaterial.map((e) => {
               return (
                 <div>
                   <Cards key={e.id} {...e} />

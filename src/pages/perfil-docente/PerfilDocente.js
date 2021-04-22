@@ -82,30 +82,35 @@ function PerfilDocente() {
         </div>
 
         <div className="c">
-          <h2>Materiales diseñados</h2>
-          <div className="contenedor-materiales">
-            {materiales ? vectorMaterial.map((e) => {
-              return (
-                <div>
-                  <Cards key={e.id} {...e} />
-                </div>
-              );
-            }) : <></>}
+          <div className="over">
+            <h2>Materiales diseñados</h2>
+            <div className="contenedor-materiales">
+              {materiales ? vectorMaterial.map((e) => {
+                return (
+                  <div>
+                    <Cards key={e.id} {...e} />
+                  </div>
+                );
+              }) : <></>}
+            </div>
           </div>
         </div>
+
         <div className="c">
-          <h2>Reconocimientos</h2>
-          <div className="contenedor-reconocimientos">
-            {vectorReconocimiento ? vectorReconocimiento.map((element) => {
-              return (
-                <div>
-                  <CardsReconocimietos
-                    key={element.id_reconocimiento}
-                    {...element}
-                  />
-                </div>
-              );
-            }) : <></>}
+          <div className="over">
+            <h2>Reconocimientos</h2>
+            <div className="contenedor-reconocimientos">
+              {vectorReconocimiento ? vectorReconocimiento.map((element) => {
+                return (
+                  <div>
+                    <CardsReconocimietos
+                      key={element.id_reconocimiento}
+                      {...element}
+                    />
+                  </div>
+                );
+              }) : <></>}
+            </div>
           </div>
         </div>
       </div>

@@ -49,7 +49,15 @@ function VerMaterial() {
                 <div class="col s12 m7">
                     <div class="card">
                         <div class="card-image">
-                            <iframe src={"http://docs.google.com/gview?url=" + API_URL + "/api/material/documento/10%20CA-ProblemasTemas6-10corr.pdf&embedded=true"} width="100%" height="700px" frameborder="0" ></iframe>
+                            <>
+                                {/* aqui se hace la peticion para pedir el archivo */}
+                                {materialActual ? <iframe src={materialActual ? "http://docs.google.com/gview?url="
+                                    + API_URL
+                                    + "/api/material/documento/"
+                                    + materialActual.link_archivo_material.split("/")[materialActual.link_archivo_material.split("/").length - 1]
+                                    + "&embedded=true" : ""} width="100%" height="700px" frameborder="0" ></iframe> : ""}
+                            </>
+
                             <span class="card-title">Card Title</span>
                         </div>
                         <div class="card-content">

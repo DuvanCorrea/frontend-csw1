@@ -94,3 +94,8 @@
 .contenedor-perfil-docente .btn-perfil:hover {
     opacity: 1;
 }
+
+.over{
+    max-height: 550px;
+  overflow: auto;
+}

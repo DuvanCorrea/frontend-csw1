@@ -3,9 +3,9 @@ import { useState } from "react";
 import { useContext } from "react";
 import docenteContext from "../../context/docenteContext";
 import deleteMaterial from "../../servicios/deleteMaterial";
-import getDocumento from "../../servicios/getDocumento";
 import { API_URL } from "../../servicios/config"
 import "./Cards.css";
+import { useHistory } from "react-router";
 
 const Cards = ({
   id,
@@ -13,17 +13,21 @@ const Cards = ({
   link_material,
   fecha_material,
   publicado,
-  link_archivo_material
+  link_archivo_material,
+  DOCENTES_id_docente
 }) => {
 
+  // Variables
+  // ----------
   let nombre_documento = ""
+  const history = useHistory()
 
   if (link_archivo_material) {
     nombre_documento = link_archivo_material.split("/")[link_archivo_material.split("/").length - 1]
   }
 
   const [cargando, setCargando] = useState(false)
-  const { materiales, setMateriales } = useContext(docenteContext)
+  const { materiales, setMateriales, setMaterial } = useContext(docenteContext)
 
   const eliminarMaterial = ({ target }) => {
 
@@ -32,7 +36,6 @@ const Cards = ({
     // Se toma el id del material a eliminar
     // -------------------------------------
     console.log(target.name)
-
 
     // Se borra el material del estado global
     // donde se guardaron al cargar la pagina 
@@ -55,7 +58,11 @@ const Cards = ({
   // Ver documento
   // -------------
   const verDocumento = () => {
-    window.open("/material/documento/" + nombre_documento)
+    setMaterial({
+      id_docente: DOCENTES_id_docente,
+      id_material: id
+    })
+    history.push("/ver material")
   }
 
   if (cargando) {

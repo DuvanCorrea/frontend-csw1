@@ -1,25 +1,46 @@
 import React, { useEffect } from "react";
+import { useContext } from "react";
+import { useState } from "react";
 import NavbarDocente from "../../components/navbar_docente/NavbarDocente";
+import docenteContext from "../../context/docenteContext";
+import getDocente from "../../servicios/getDocente";
+import getMaterial from "../../servicios/getMaterial";
 import { API_URL } from "../../servicios/config"
 
 import "./verMaterial.css";
+import { useHistory } from "react-router";
 
 //Lo que se renderisa
-function VerMaterial({
-    id = 10,
-    titulo_material = "26 heroku-recovery-codes.txt",
-    link_material = "",
-    fecha_material = "",
-    publicado = "false",
-    link_archivo_material = "26 heroku-recovery-codes.txt",
-    nombre_documento = "26 heroku-recovery-codes.txt"
-}) {
+function VerMaterial() {
 
-    //Trae el material
+    // variaables
+    // ----------
+    const [docente, setDocente] = useState()
+    const [materialActual, setMaterialActual] = useState()
+    const { material } = useContext(docenteContext)
+    const history = useHistory()
+
+    console.log("material", material)
+
     useEffect(() => {
+        if (material) {
+            const auxDocente = async () => {
+                const { data } = await getDocente({ id_docente: material.id_docente })
+                setDocente(data)
+            }
+            auxDocente()
+            const auxMaterial = async () => {
+                const { data } = await getMaterial({ id_material: material.id_material })
+                setMaterialActual(data)
+            }
+            auxMaterial()
+        }
 
     }, []);
 
+    if (material === null || material === undefined) {
+        history.push("/")
+    }
 
     return (
         <>
@@ -32,11 +53,21 @@ function VerMaterial({
                             <span class="card-title">Card Title</span>
                         </div>
                         <div class="card-content">
-                            <p>I am a very simple card. I am good at containing small bits of information.
-          I am convenient because I require little markup to use effectively.</p>
+                            <div className="infoDocente">
+                                <h3>DOCENTE</h3>
+                                <p>Nombre: {docente ? docente.nombre_completo : "loading..."}</p>
+                                <p>Correo: {docente ? docente.correo : "loading..."}</p>
+                            </div>
+                            <div className="infoMaterial">
+                                <h3>MATERIAL</h3>
+                                <p>Titulo: {materialActual ? materialActual.titulo_material : "loading..."}</p>
+                                <p>Fecha: {materialActual ? materialActual.fecha_material : "loading..."}</p>
+                            </div>
                         </div>
                         <div class="card-action">
-                            <a href="#">This is a link</a>
+                            {materialActual ? <a className="btn btn-cards superc"
+                                href={`${API_URL}/api/material/documento/${materialActual.link_archivo_material.split("/")[materialActual.link_archivo_material.split("/").length - 1]}`}>Descargar</a> : ""}
+
                         </div>
                     </div>
                 </div>

@@ -21,9 +21,6 @@ export const Navbar = () => {
             <Link to="/Acerca de">
               <li>Acerca de</li>
             </Link>
-            <Link to="/Materiales">
-              <li>Materiales</li>
-            </Link>            
           </ul>
           {
             //Enlace a usuario

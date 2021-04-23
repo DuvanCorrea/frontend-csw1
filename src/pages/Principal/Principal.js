@@ -7,6 +7,8 @@ import { useHistory } from "react-router";
 import getMateriales from '../../servicios/getMateriales';
 import CardPrincipal from "../../components/cards/CardPrincipal"
 
+import "./Principal.css"
+
 
 const Principal = () => {
 
@@ -32,20 +34,20 @@ const Principal = () => {
       <Banner />
       <p className="Sub-titulo">Materiales Publicados</p>
       {/* TABLA DE MATERIALES */}
-      {materiales ? <table className="table-list-products">
+      {materiales ? <div className="contenedor-tabla container"><table className="table-list-products">
         <thead>
           <tr>
             <th>Titulo</th>
             <th>Fecha</th>
-            <th>Opciones</th>
           </tr>
         </thead>
+
         <tbody>
           {materiales.map((item) => {
             return <CardPrincipal key={item.id} {...item} />;
           })}
         </tbody>
-      </table> : ""}
+      </table> </div>: ""}
     </>
   );
 };

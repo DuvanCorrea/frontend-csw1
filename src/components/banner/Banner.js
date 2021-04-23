@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import ImagenBanner from "../../images/ImagenBanner.jpg";
+import ImagenBanner from "../../images/banner.jpg";
 import "../../components/banner/Banner.css";
 
 const Banner = () => {
@@ -16,13 +16,13 @@ const Banner = () => {
             elaborado por los profesores del área y los reconocimientos que ha
             tenido el profesor.
             </p>
-            <Link to="/Registro usuario">
+            {/* <Link to="/Registro usuario">
                 <button
                 className="browser-default boton-registrar"
                 >
                     Regitrarse
                 </button>
-            </Link>
+            </Link> */}
         </div>
       </div>
     </>

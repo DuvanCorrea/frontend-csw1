@@ -73,10 +73,10 @@ const Cards = ({
     <>
       <tr>
         <td>
-          <span>Titulo:</span> {titulo_material}{" "}
+          {titulo_material}{" "}
         </td>
         <td>
-          <span>Año:</span> {fecha_material.split("T")[0]}{" "}
+          {fecha_material.split("T")[0]}{" "}
         </td>
         <td>
 

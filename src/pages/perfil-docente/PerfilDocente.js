@@ -57,13 +57,13 @@ function PerfilDocente() {
           <img src={UsuarioIcon} alt="Logo" />
           <div className="info-perfil">
             <p>
-              <span>Nombre:</span> Jose Maria Castaño
+              <span>Nombre:</span> {docente ? docente.nombre : ""}
             </p>
             <p>
-              <span>Materia:</span> Ciencisas Siciales
+              <span>Materia:</span> {docente ? docente.areas : ""}
             </p>
             <p>
-              <span>Enforque material:</span> Animales
+              <span>Enforque material:</span> {docente ? docente.materia : ""}
             </p>
             <button className="btn btn-cards btn-perfil s">
               Ver tus materiales

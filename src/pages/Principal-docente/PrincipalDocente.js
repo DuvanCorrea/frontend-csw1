@@ -34,22 +34,6 @@ const PrincipalDocente = () => {
             <p className="enlaces-p">Reconocimiento</p>
           </Link>
         </div>
-
-        <div className="contenedor-informacion dos">
-          <img
-            src={IconoSubirMaterial}
-            alt="Generar listados"
-            className="icon"
-          />
-          <p className="titulo sub">Generar</p>
-          <p className="titulo">Listados</p>
-          <Link to="/Docente/Subir material">
-            <p className="enlaces-p">Materiales diseñados</p>
-          </Link>
-          <Link to="/Acerca de">
-            <p className="enlaces-p">Reconocimiento</p>
-          </Link>
-        </div>
       </div>
     </>
   );

@@ -1,0 +1,9 @@
+.contenedor-tabla {
+    display: flex;
+}
+
+.contenedor-tabla td, th {
+    color: #000000de;
+    text-align: center;
+    justify-content: center;
+}

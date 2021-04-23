@@ -37,9 +37,9 @@ const PrincipalDocente = () => {
                   </div>
                   <div className="card-content">
                     <span className="card-title activator grey-text text-darken-4">Subir materiales<i className="material-icons right">more_vert</i></span>
-                    <p>            <a className="btn" to="/Docente/Subir material">
+                    <p>            <Link className="btn" to="/Docente/Subir material">
                       Subir PDF
-                </a></p>
+                </Link></p>
                   </div>
                   <div className="card-reveal">
                     <span className="card-title grey-text text-darken-4">Subir materiales<i className="material-icons right">close</i></span>
@@ -58,13 +58,13 @@ const PrincipalDocente = () => {
                   </div>
                   <div className="card-content">
                     <span className="card-title activator grey-text text-darken-4">Agregar reconocimiento<i className="material-icons right">more_vert</i></span>
-                    <p><a className="btn" to="/Docente/Subir reconocimiento">
+                    <p><Link className="btn" to="/Docente/Subir reconocimiento">
                       Agregar reconocimiento
-            </a></p>
+            </Link></p>
                   </div>
                   <div className="card-reveal">
                     <span className="card-title grey-text text-darken-4">Agregar reconocimientos<i className="material-icons right">close</i></span>
-                    <p>Sabemos que eres un exelente docente y por ellos necesita alardear de tus reconocimiento, en esta sección puedes agregalos y seran visibles para todos los que revisen tu perfil.</p>
+                    <p>Sabemos que eres un exelente docente y por ellos necesita alardear de tus reconocimientos, en esta sección puedes agregalos y seran visibles para todos los que revisen tu perfil.</p>
                   </div>
                 </div>
               </div>

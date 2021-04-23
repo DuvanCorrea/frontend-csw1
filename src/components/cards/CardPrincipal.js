@@ -10,9 +10,7 @@ import { useHistory } from "react-router";
 const Cards = ({
   id,
   titulo_material,
-  link_material,
   fecha_material,
-  publicado,
   link_archivo_material,
   DOCENTES_id_docente
 }) => {
@@ -27,33 +25,7 @@ const Cards = ({
   }
 
   const [cargando, setCargando] = useState(false)
-  const { docente, materiales, setMateriales, setMaterial } = useContext(docenteContext)
-
-  const eliminarMaterial = ({ target }) => {
-
-    setCargando(true)
-
-    // Se toma el id del material a eliminar
-    // -------------------------------------
-    console.log(target.name)
-
-    // Se borra el material del estado global
-    // donde se guardaron al cargar la pagina 
-    // del docente
-    // --------------------------------------
-    const arrayAux = materiales.filter(e => e.id.toString() !== target.name.toString())
-
-    setMateriales(arrayAux)
-
-    // se envia la peticion de eliminacionde la base de datos
-    // ------------------------------------------------------
-    const aux = async () => {
-      await deleteMaterial({ id_material: id })
-      setCargando(false)
-    }
-    aux()
-
-  }
+  const { materiales, setMateriales, setMaterial } = useContext(docenteContext)
 
   // Ver documento
   // -------------

@@ -1,22 +1,30 @@
 import React, { useContext, useEffect, useState } from "react";
-import NavbarDocente from "../../components/navbar_docente/NavbarDocente";
-import NavbarNormal from "../../components/navbar/Navbar";
-import UsuarioIcon from "../../images/UsuarioIcon.svg";
-import getMateriales from "../../servicios/getMateriales";
-import getReconocimientos from "../../servicios/getReconocimientos";
-import Cards from "../../components/cards/Cards";
+
 import CardsReconocimietos from "../../components/cards/CardsReconocimietos";
+import NavbarDocente from "../../components/navbar_docente/NavbarDocente";
+import getReconocimientos from "../../servicios/getReconocimientos";
+import NavbarNormal from "../../components/navbar/Navbar";
+import getMateriales from "../../servicios/getMateriales";
+import docenteContext from "../../context/docenteContext";
+import UsuarioIcon from "../../images/UsuarioIcon.svg";
+import Cards from "../../components/cards/Cards";
+import { useHistory } from "react-router";
 import "./PerfilDocente.css";
 
-import docenteContext from "../../context/docenteContext";
-import { useHistory } from "react-router";
 
 //Lo que se renderisa
 function PerfilDocente() {
-  const [vectorMaterial, setVectorMateriales] = useState([]);
   const [vectorReconocimiento, setvectorReconocimiento] = useState([]);
+  const [vectorMaterial, setVectorMateriales] = useState([]);
 
-  const { docente, setDocente, setMateriales, setReconocimientos, materiales } = useContext(docenteContext)
+  const {
+    setReconocimientos,
+    docenteTemporal,
+    setMateriales,
+    setDocente,
+    materiales,
+    docente,
+  } = useContext(docenteContext)
   const history = useHistory()
 
   //Trae los datos de materiales
@@ -38,7 +46,6 @@ function PerfilDocente() {
       setvectorReconocimiento(data);
     };
     aux();
-
   }, [setvectorReconocimiento]);
 
   const cerrarSesion = () => {
@@ -46,6 +53,13 @@ function PerfilDocente() {
     history.push("/")
   }
 
+  // redireccionar si no hay docente despues de ver un documento
+  // -----------------------------------------------------------
+  if (docente === null || docente === undefined) {
+    if (docenteTemporal === null || docenteTemporal === undefined) {
+      history.push("/")
+    }
+  }
 
   return (
     <>
@@ -57,20 +71,14 @@ function PerfilDocente() {
           <img src={UsuarioIcon} alt="Logo" />
           <div className="info-perfil">
             <p>
-              <span>Nombre:</span> {docente ? docente.nombre : ""}
+              <span>Nombre:</span> {docente ? docente.nombre : <>{docenteTemporal ? docenteTemporal.nombre_completo : ""}</>}
             </p>
             <p>
-              <span>Materia:</span> {docente ? docente.areas : ""}
+              <span>Materia:</span> {docente ? docente.areas : <>{docenteTemporal ? docenteTemporal.areas_conocimiento : ""}</>}
             </p>
             <p>
-              <span>Enforque material:</span> {docente ? docente.materia : ""}
+              <span>Enforque material:</span> {docente ? docente.materia : <>{docenteTemporal ? docenteTemporal.materia : ""}</>}
             </p>
-            <button className="btn btn-cards btn-perfil s">
-              Ver tus materiales
-            </button>
-            <button className="btn btn-cards btn-perfil">
-              Ver reconocimientos
-            </button>
             {docente ? <button onClick={() => {
               cerrarSesion()
             }} className="btn btn-cards btn-perfil">

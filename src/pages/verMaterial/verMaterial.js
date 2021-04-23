@@ -1,23 +1,21 @@
-import React, { useEffect } from "react";
-import { useContext } from "react";
-import { useState } from "react";
 import NavbarDocente from "../../components/navbar_docente/NavbarDocente";
+import React, { useEffect, useContext, useState } from "react";
 import docenteContext from "../../context/docenteContext";
-import getDocente from "../../servicios/getDocente";
 import getMaterial from "../../servicios/getMaterial";
+import Navbar from "../../components/navbar/Navbar";
+import getDocente from "../../servicios/getDocente";
 import { API_URL } from "../../servicios/config"
-
-import "./verMaterial.css";
 import { useHistory } from "react-router";
+import "./verMaterial.css";
 
 //Lo que se renderisa
 function VerMaterial() {
 
     // variaables
     // ----------
-    const [docente, setDocente] = useState()
+    const { material, setDocenteTemporal, docente } = useContext(docenteContext)
     const [materialActual, setMaterialActual] = useState()
-    const { material } = useContext(docenteContext)
+    const [docenteX, setDocenteX] = useState()
     const history = useHistory()
 
     console.log("material", material)
@@ -26,7 +24,7 @@ function VerMaterial() {
         if (material) {
             const auxDocente = async () => {
                 const { data } = await getDocente({ id_docente: material.id_docente })
-                setDocente(data)
+                setDocenteX(data)
             }
             auxDocente()
             const auxMaterial = async () => {
@@ -35,8 +33,16 @@ function VerMaterial() {
             }
             auxMaterial()
         }
-
     }, []);
+
+    // Se hace una copia temporal de un docente
+    // para visualizar su perfil
+    // ----------------------------------------
+    const verDocente = () => {
+        setDocenteTemporal(docenteX)
+        history.push("/Docente/Perfil docente")
+    }
+
 
     if (material === null || material === undefined) {
         history.push("/")
@@ -44,7 +50,7 @@ function VerMaterial() {
 
     return (
         <>
-            <NavbarDocente />
+            {docente ? <NavbarDocente /> : <Navbar />}
             <div class="row">
                 <div class="col s12 m7">
                     <div class="card">
@@ -63,7 +69,7 @@ function VerMaterial() {
                         <div class="card-content">
                             <div className="infoDocente">
                                 <h3>DOCENTE</h3>
-                                <p>Nombre: {docente ? docente.nombre_completo : "loading..."}</p>
+                                Nombre: <a className="linkDocente" onClick={verDocente}> {docente ? docente.nombre_completo : "loading..."}</a>
                                 <p>Correo: {docente ? docente.correo : "loading..."}</p>
                             </div>
                             <div className="infoMaterial">

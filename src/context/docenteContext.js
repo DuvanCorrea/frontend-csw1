@@ -12,6 +12,7 @@ export const DocenteProvider = ({ children }) => {
     const [reconocminetos, setReconocimientos] = useState([]);
     const [docente, setDocente] = useState();
     const [material, setMaterial] = useState()
+    const [docenteTemporal, setDocenteTemporal] = useState()
 
 
     // enviamos los valores a lo que este envolviendo el contexto 
@@ -20,7 +21,16 @@ export const DocenteProvider = ({ children }) => {
     return (
         <docenteContext.Provider
             value={{
-                materiales, setMateriales, reconocminetos, setReconocimientos, docente, setDocente, material, setMaterial
+                materiales,
+                setMateriales,
+                reconocminetos,
+                setReconocimientos,
+                docente,
+                setDocente,
+                material,
+                setMaterial,
+                docenteTemporal,
+                setDocenteTemporal
             }}
         >
             {children}

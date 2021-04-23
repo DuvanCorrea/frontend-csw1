@@ -9,20 +9,22 @@ const Banner = () => {
       <div className="Contenedor-banner">
         <img src={ImagenBanner} alt="Imagen Banner" className="Imagen-Banner" />
         <div className="texto-encima">
-            <p className="titulo-banner">MaterialGestor</p>
-            <p className="text">
+          <p className="titulo-banner">MaterialGestor</p>
+          <p className="text">
             MaterialGestor es un sitio web desde el cual se puedan publicar y
             gestionar el material <br />
             elaborado por los profesores del área y los reconocimientos que ha
             tenido el profesor.
             </p>
-            {/* <Link to="/Registro usuario">
+          {/* <Link to="/Registro usuario">
                 <button
                 className="browser-default boton-registrar"
                 >
                     Regitrarse
                 </button>
             </Link> */}
+
+
         </div>
       </div>
     </>

@@ -69,8 +69,8 @@ function VerMaterial() {
                         <div class="card-content">
                             <div className="infoDocente">
                                 <h3>DOCENTE</h3>
-                                Nombre: <a className="linkDocente" onClick={verDocente}> {docente ? docente.nombre_completo : "loading..."}</a>
-                                <p>Correo: {docente ? docente.correo : "loading..."}</p>
+                                Nombre: <a className="linkDocente" onClick={verDocente}> {docenteX ? docenteX.nombre_completo : "loading..."}</a>
+                                <p>Correo: {docenteX ? docenteX.correo : "loading..."}</p>
                             </div>
                             <div className="infoMaterial">
                                 <h3>MATERIAL</h3>

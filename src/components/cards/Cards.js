@@ -71,38 +71,50 @@ const Cards = ({
 
   return (
     <>
-      <div className="Card">
-        <div className="contenedor-info-cards">
-          <p className="info-card">
-            <span>Titulo:</span> {titulo_material}{" "}
-          </p>
-          <p className="info-card">
-            <span>Link de descarga:</span> {link_material}{" "}
-          </p>
-          <p className="info-card">
-            <span>Año:</span> {fecha_material}{" "}
-          </p>
-          <p className="info-card">
-            {docente ? <><span>Publicado:</span> {publicado ? "SI" : "NO"}{" "}</> : ""}
-          </p>
-          {docente ? <><button onClick={(e) => {
-            eliminarMaterial(e)
-          }}
-            className="btn btn-cards superc"
-            name={id}>Eliminar</button></> : ""}
-          {docente ? <button name={id} className="btn btn-cards superc">Editar</button> : ""}
+      {/* PRUEBA DE NUEVA CARTA */}
 
-          {docente ? <>{publicado ? <></> : <button className="btn btn-cards superc">Publicar</button>}</> : ""}
+      <div class="row">
+        <div class="col s12">
+          <div class="card ">
+            <div class="card-content white-text">
+              <span class="card-title">{titulo_material}{" "}</span>
 
-          <a className="btn btn-cards superc"
-            href={`${API_URL}/api/material/documento/${nombre_documento}`}>Descargar</a>
+              <p className="info-card">
+                <span>Año:</span> {fecha_material.split("T")[0]}{" "}
+              </p>
 
-          <button onClick={() => {
-            verDocumento()
-          }} name={id} className="btn btn-cards superc">Ver</button>
+              <p className="info-card">
+                <span>Link de descarga:</span> {link_material}{" "}
+              </p>
+
+              <p className="info-card">
+                {docente ? <><span>Publicado:</span> {publicado ? "SI" : "NO"}{" "}</> : ""}
+              </p>
+
+            </div>
+            <div class="card-action">
+
+              {/* BOTONES */}
+
+              {docente ? <><button onClick={(e) => {
+                eliminarMaterial(e)
+              }}
+                className="btn btn-cards superc"
+                name={id}>Eliminar</button></> : ""}
+              {/* {docente ? <button name={id} className="btn btn-cards superc">Editar</button> : ""} */}
+
+              {docente ? <>{publicado ? <></> : <button className="btn btn-cards superc">Publicar</button>}</> : ""}
+
+              <a className="btn btn-cards superc"
+                href={`${API_URL}/api/material/documento/${nombre_documento}`}>Descargar</a>
+
+              <button onClick={() => {
+                verDocumento()
+              }} name={id} className="btn btn-cards superc">Ver</button>
+            </div>
+          </div>
         </div>
       </div>
-
     </>
   );
 };

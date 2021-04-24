@@ -7,7 +7,7 @@
 .Contenedor-Nav-docente {
     background-color: #0CB1F2;
     display: flex;
-    /* height: 45px; */
+    height: 50px;
     justify-content: space-between;
     align-items: center;
     width: 100%;
@@ -49,6 +49,11 @@
 
 .Contenedor-Nav-docente ul a {
     text-decoration: none;
+    border-radius: 10px;
+    height: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .Contenedor-Nav-docente ul a li {
@@ -70,11 +75,15 @@
 }
 
 .Contenedor-Nav-docente div .principal-inicio {
-    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     width: 90px;
     font-weight: 700;
+    height: 50px;
 }
 
 .Contenedor-Nav-docente div .principal-inicio:hover {
     background-color: #0B9FD9;
+    border-radius: 10px;
 }

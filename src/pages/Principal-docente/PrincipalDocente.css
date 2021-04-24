@@ -52,3 +52,20 @@
 .enlaces-p:hover {
     text-decoration: underline;
 }
+
+.card-content .btn-principal-docente {
+    width: 120px;
+    border-radius: 5px;
+    margin-left: auto;
+    margin-right: auto;
+    left: 0;
+    right: 0;
+    cursor: pointer;
+    background-color: #0CE86F !important;
+    font-weight: 700;
+}
+
+.card-content .btn-principal-docente:hover {
+    /* border-radius: 0px; */
+    background-color: #00c75a !important;
+}

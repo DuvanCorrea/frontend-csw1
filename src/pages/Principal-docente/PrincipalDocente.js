@@ -35,7 +35,7 @@ const PrincipalDocente = () => {
                   </div>
                   <div className="card-content">
                     <span className="card-title activator grey-text text-darken-4">Subir materiales<i className="material-icons right">more_vert</i></span>
-                    <p>            <Link className="btn" to="/Docente/Subir material">
+                    <p>            <Link className="btn btn-principal-docente" to="/Docente/Subir material">
                       Subir PDF
                 </Link></p>
                   </div>
@@ -55,8 +55,8 @@ const PrincipalDocente = () => {
                     <img className="activator" src={ImagenSubirReconocimiento} />
                   </div>
                   <div className="card-content">
-                    <span className="card-title activator grey-text text-darken-4">Agregar reconocimiento<i className="material-icons right">more_vert</i></span>
-                    <p><Link className="btn" to="/Docente/Subir reconocimiento">
+                    <span className="card-title activator grey-text text-darken-4">Agregar reconocimientos<i className="material-icons right">more_vert</i></span>
+                    <p><Link className="btn btn-principal-docente" to="/Docente/Subir reconocimiento">
                       Agregar reconocimiento
             </Link></p>
                   </div>

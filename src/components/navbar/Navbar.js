@@ -1,7 +1,7 @@
-import React from "react";
-import { Link } from "react-router-dom";
-import "../../components/navbar/Navbar.css";
+import "./Navbar.css";
 import Logo from "../../images/Logo.svg";
+import { Link } from "react-router-dom";
+import React from "react";
 
 export const Navbar = () => {
   return (
@@ -10,16 +10,22 @@ export const Navbar = () => {
         {
           //Enlace a inicio
         }
-        <Link to="/" className="Logo">
-          <img src={Logo} alt="Logo" />
-        </Link>
+        <div>
+
+          <Link to="/" className="Logo">
+            <img src={Logo} alt="Logo" />
+          </Link>
+          <Link className="principal-inicio" to="/">
+            INICIO
+          </Link>
+        </div>
         {
           //Menú de navegación
         }
-        <div className="Contenedor-menu">
-          <ul className="nav-enlaces">
+        <div>
+          <ul>
             <Link to="/Acerca de">
-              <li>Acerca de</li>
+              <li>ACERCA DE</li>
             </Link>
           </ul>
           {

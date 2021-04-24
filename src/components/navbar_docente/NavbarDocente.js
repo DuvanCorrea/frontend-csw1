@@ -16,27 +16,29 @@ export const NavbarDocente = () => {
         {
           //Enlace a inicio
         }
-        <Link to="/" className="Logo">
-          <img src={Logo} alt="Logo" />
-        </Link>
-        {
-          //Menú de navegación
-        }
+        <div>
+          <Link to="/" className="Logo">
+            <img src={Logo} alt="Logo" />
+          </Link>
+          <Link className="principal-inicio" to="/">
+            INICIO
+          </Link>
+        </div>
         <div className="Contenedor-menu">
           <ul className="nav-enlaces">
             <Link to="/Acerca de">
-              <li>Acerca de</li>
+              <li>ACERCA DE</li>
             </Link>
             <Link to="/Docente/Perfil docente">
-              <li>{docente ? docente.nombre : <></>}</li>
+              <li>{docente ? docente.nombre.toUpperCase() : <></>}</li>
             </Link>
           </ul>
           {
             //Enlace a usuario
           }
-          <Link to="/Docente/Perfil docente" className="Usuario-icon">
+          {/* <Link to="/Docente/Perfil docente" className="Usuario-icon">
             <img src={UsuarioIcon} alt="Usuario" className="UsuarioIcon" />
-          </Link>
+          </Link> */}
 
         </div>
       </nav>

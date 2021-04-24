@@ -1,8 +1,6 @@
 import React, { useContext } from "react";
 import { Link, useHistory } from "react-router-dom";
 
-import IconoSubirMaterial from "../../images/IconoSubirMaterial.svg";
-import Banner from "../../components/banner/Banner";
 import NavbarDocente from '../../components/navbar_docente/NavbarDocente';
 import ImagenSubirMaterial from "../../images/subir material.jpg"
 import ImagenSubirReconocimiento from "../../images/agregar reconocimineto.jpg"

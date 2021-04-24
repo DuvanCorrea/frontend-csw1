@@ -1,20 +1,19 @@
 import React, { useContext, useEffect, useState } from "react";
-import Form from "react-bootstrap/Form";
-import Button from "react-bootstrap/Button";
-import Logo from "../../images/Logo.svg";
-import "./Login.css";
-import postDocenteLogin from "../../servicios/login";
-import { useHistory } from "react-router";
-
 import docenteContext from "../../context/docenteContext";
+import postDocenteLogin from "../../servicios/login";
+import Navbar from "../../components/navbar/Navbar";
+import Button from "react-bootstrap/Button";
+import { useHistory } from "react-router";
+import Logo from "../../images/Logo.svg";
+import Form from "react-bootstrap/Form";
+import "./Login.css";
+
 
 export default function Login() {
-  const [email, setEmail] = useState("");
+  const { docente, setDocente } = useContext(docenteContext);
   const [password, setPassword] = useState("");
   const [valido, setValido] = useState(null);
-
-  const { docente, setDocente } = useContext(docenteContext);
-
+  const [email, setEmail] = useState("");
   const history = useHistory();
 
   useEffect(() => {
@@ -78,40 +77,68 @@ export default function Login() {
   }
 
   return (
-    <div className="contenerdor-login-a">
-      <div className="contenedor-login">
-        <img src={Logo} alt="Logo" />
-        <p className="titulo-registo">MaterialGestor</p>
-        <Form onSubmit={handleSubmit}>
-          <Form.Group size="lg" controlId="email" className="form">
-            <Form.Control
-              autoFocus
-              type="email"
-              value={email}
-              className="browser-default input"
-              placeholder="Correo electronico"
-              onChange={(e) => setEmail(e.target.value)}
-            />
-          </Form.Group>
-          <Form.Group size="lg" controlId="password" className="form">
-            <Form.Control
-              type="password"
-              value={password}
-              className="browser-default input"
-              placeholder="Contraseña"
-              onChange={(e) => setPassword(e.target.value)}
-            />
-          </Form.Group>
-          <p>{valido === null || valido ? <></> : <p>Correo o contraseña incorrectos</p>}</p>
-          <Button
-            className="btn btn-ingresar"
-            type="submit"
-            disabled={false}
-          >
-            Ingresar
+    <><Navbar />
+      <div className="row">
+
+        <div className="col s3">
+
+        </div>
+
+        {/* Columna para el inicio de session */}
+        <div className="col s6">
+          <div className="contenerdor-login-a">
+            <div className="contenedor-login">
+              <img src={Logo} alt="Logo" />
+              <p className="titulo-registo">MaterialGestor</p>
+              <Form onSubmit={handleSubmit}>
+                <Form.Group size="lg" controlId="email" className="form">
+                  <span>Correo electrónico</span>
+                  <Form.Control
+                    autoFocus
+                    type="email"
+                    value={email}
+                    className="browser-default input"
+                    placeholder="Correo electronico"
+                    onChange={(e) => setEmail(e.target.value)}
+                  />
+                </Form.Group>
+                <Form.Group size="lg" controlId="password" className="form">
+                  <span>Contraseña</span>
+                  <Form.Control
+                    type="password"
+                    value={password}
+                    className="browser-default input"
+                    placeholder="Contraseña"
+                    onChange={(e) => setPassword(e.target.value)}
+                  />
+                </Form.Group>
+                <p>{valido === null || valido ? <></> : <p>Correo o contraseña incorrectos</p>}</p>
+                <Button
+                  className="btn btn-ingresar"
+                  type="submit"
+                  disabled={false}
+                >
+                  Ingresar
           </Button>
-        </Form>
+              </Form>
+            </div>
+          </div>
+        </div>
+
+        {/* Columna para animaciones o videos */}
+        <div className="col s3">
+          {/* <iframe
+            width="560"
+            height="315"
+            src="https://www.youtube.com/embed/MPhAmsVtgAs?rel=0&amp;autoplay=1"
+            title="YouTube video player"
+            frameborder="0"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+            allowfullscreen>
+          </iframe> */}
+        </div>
+
       </div>
-    </div>
+    </>
   );
 }

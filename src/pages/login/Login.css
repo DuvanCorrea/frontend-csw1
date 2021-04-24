@@ -7,7 +7,13 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 100vh;
+  margin-top: 70px;
+  /* height: 100vh; */
+}
+
+.contenerdor-login-a span {
+  color: white;
+  font-weight: 600;
 }
 
 .contenedor-login {
@@ -18,7 +24,7 @@
   align-items: center;
   padding: 20px;
   border-radius: 5PX;
-  background-color: #3498DB;
+  background-color: #0CB1F2;
   outline: none;
   display: flex;
   justify-content: center;
@@ -47,12 +53,18 @@
 }
 
 .contenedor-login form .btn-ingresar {
-  background-color: #F39C12;
   width: 120px;
-  border-radius: 2px;
-  margin-left:auto;
-  margin-right:auto;
-  left:0;
-  right:0;
+  border-radius: 5px;
+  margin-left: auto;
+  margin-right: auto;
+  left: 0;
+  right: 0;
   cursor: pointer;
+  background-color: #0CE86F !important;
+  font-weight: 900;
+}
+
+.contenedor-login form .btn-ingresar:hover {
+  /* border-radius: 0px; */
+  background-color: #00c75a !important;
 }

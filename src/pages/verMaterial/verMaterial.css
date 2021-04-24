@@ -1,101 +1,62 @@
-* {
-    margin: 0px;
-    padding: 0px;
+* p, h1, h2, h3, h4, h5 {
+    opacity: 0.9;
 }
 
-.contenedor-perfil {
-    display: flex;
-}
-
-.contenedor-perfil h2, h3 {
-    font-size: 20px;
-    color: #000000;
-    font-weight: bolder;
-    display: flex;
-    justify-content: center;
-}
-
-.contenedor-perfil-docente {
-    background-color: #FFFFFF;
-    width: 20%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    margin: 5px;
-    padding: 20px;
-}
-
-.contenedor-materiales {
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    background-color: #FFFFFF;
-    overflow-wrap: initial;
-}
-
-.contenedor-reconocimientos {
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    background-color: #FFFFFF;
-    overflow-wrap: initial;
-}
-
-.contenedor-perfil-docente img {
-    width: 80px;
-    margin-bottom: 15px;
-    padding: 20px;
-}
-
-.contenedor-perfil-docente p {
-    font-weight: normal;
-}
-
-.pe {
-    color: #000000;
-}
-
-.contenedor-perfil span {
-    font-weight: bolder;
-}
-
-.contenedor-perfil-docente p {
-    text-align: left;
-}
-
-.contenedor-perfil .c {
-    width: 40%;
-    margin: 5px;
-    display: flex;
-    flex-direction: column;
-    background-color: #FFFFFF;
-    border-radius: 5px;
-}
-
-.contenedor-perfil-docente .btn-perfil {
-    width: 100%;
-    background-color: transparent;
-    box-shadow: none;
-    color: #000000;
-    opacity: 0.5;
-    display: flex;
-    justify-content: left;
-    padding: 0px;
-}
-
-.contenedor-perfil-docente .s {
-    margin-top: 20px;
-}
-
-.contenedor-perfil-docente .btn-perfil:hover {
-    opacity: 1;
-}
+/* Contenido de la carta */
 
 .linkDocente {
     text-decoration-line: underline;
     cursor: pointer;
+}
+
+.infoMaterial strong, .infoDocente strong {
+    font-weight: 700;
+    color: black;
+    opacity: 0.9;
+}
+
+/* Esto es para centrar la carta centrar */
+
+.padre-verMateriales {
+    width: 80%;
+}
+
+/* Configuraciones del boton descargar */
+
+.padre-btn-descargar-verMaterial {
+    display: flex;
+    justify-content: center;
+}
+
+.btn-descargar-verMaterial {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 50px;
+    background-color: #0CE86F;
+    width: 100%;
+    font-weight: 600;
+    font-size: 20px;
+}
+
+.btn-descargar-verMaterial:hover {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 50px;
+    background-color: #00c75a;
+}
+
+/* Tutilos */
+
+.infoDocente h3, .infoMaterial h3 {
+    margin: 0 0 10px 0;
+    justify-content: start;
+}
+
+/* Configuracion del pie del pdf */
+
+.pie-de-pdf{
+    color: black !important;
+    opacity: 0.5;
 }

@@ -17,6 +17,7 @@ function VerMaterial() {
     const [materialActual, setMaterialActual] = useState()
     const [docenteX, setDocenteX] = useState()
     const history = useHistory()
+    const [linkMaterial, setLinkMaterial] = useState("")
 
     console.log("material", material)
 
@@ -30,6 +31,8 @@ function VerMaterial() {
             const auxMaterial = async () => {
                 const { data } = await getMaterial({ id_material: material.id_material })
                 setMaterialActual(data)
+                setLinkMaterial(`${API_URL}/api/material/documento/${data.link_archivo_material.split("/")[data.link_archivo_material.split("/").length - 1]}`)
+
             }
             auxMaterial()
         }
@@ -51,38 +54,63 @@ function VerMaterial() {
     return (
         <>
             {docente ? <NavbarDocente /> : <Navbar />}
-            <div class="row">
-                <div class="col s12 m7">
+            <div class="row padre-verMateriales">
+                <div class="col s12">
                     <div class="card">
+
+
+
+                        {/* Contenido de la carta */}
+                        <div class="card-content">
+
+                            <div className="row">
+
+                                <div className="col s4">
+                                    <div className="infoDocente">
+
+                                        <h3>DOCENTE</h3>
+                                        <strong>Nombre:</strong> <a className="linkDocente" onClick={verDocente}> {docenteX ? docenteX.nombre_completo : "loading..."}</a>
+                                        <p><strong>Correo:</strong> {docenteX ? docenteX.correo : "loading..."}</p>
+
+                                    </div>
+                                </div>
+
+                                <div className="col s4">
+                                    <div className="infoMaterial">
+
+                                        <h3>MATERIAL</h3>
+                                        <p><strong>Titulo:</strong> {materialActual ? materialActual.titulo_material : "loading..."}</p>
+                                        <p><strong>Fecha:</strong> {materialActual ? materialActual.fecha_material.split("T")[0] : "loading..."}</p>
+
+                                    </div>
+                                </div>
+
+                                {/* Acciones de la carta */}
+
+                                <div className="col s4">
+                                    <div class="padre-btn-descargar-verMaterial">
+                                        {materialActual ? <a className="btn btn-descargar-verMaterial"
+                                            href={linkMaterial}>Descargar</a> : ""}
+
+                                    </div>
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                        {/* Aqui se muestra el pdf */}
                         <div class="card-image">
                             <>
                                 {/* aqui se hace la peticion para pedir el archivo */}
                                 {materialActual ? <iframe src={materialActual ? "http://docs.google.com/gview?url="
-                                    + API_URL
-                                    + "/api/material/documento/"
-                                    + materialActual.link_archivo_material.split("/")[materialActual.link_archivo_material.split("/").length - 1]
+                                    + linkMaterial
                                     + "&embedded=true" : ""} width="100%" height="700px" frameborder="0" ></iframe> : ""}
                             </>
 
-                            <span class="card-title">Card Title</span>
+                            <span class="card-title pie-de-pdf">Vista previa MATERIAL GESTOR ©</span>
                         </div>
-                        <div class="card-content">
-                            <div className="infoDocente">
-                                <h3>DOCENTE</h3>
-                                Nombre: <a className="linkDocente" onClick={verDocente}> {docenteX ? docenteX.nombre_completo : "loading..."}</a>
-                                <p>Correo: {docenteX ? docenteX.correo : "loading..."}</p>
-                            </div>
-                            <div className="infoMaterial">
-                                <h3>MATERIAL</h3>
-                                <p>Titulo: {materialActual ? materialActual.titulo_material : "loading..."}</p>
-                                <p>Fecha: {materialActual ? materialActual.fecha_material : "loading..."}</p>
-                            </div>
-                        </div>
-                        <div class="card-action">
-                            {materialActual ? <a className="btn btn-cards superc"
-                                href={`${API_URL}/api/material/documento/${materialActual.link_archivo_material.split("/")[materialActual.link_archivo_material.split("/").length - 1]}`}>Descargar</a> : ""}
 
-                        </div>
                     </div>
                 </div>
             </div>

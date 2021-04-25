@@ -56,19 +56,34 @@ const CardsReconocimietos = ({
         <div class="col s12">
           <div class="card ">
             <div class="card-content white-text">
-              <span class="card-title">{razon}{" "}</span>
+              <span class="card-title">{razon}</span>
 
-              <p className="info-card">
-                <span>Año:</span> {anio_reconocimento.split("T")[0]}{" "}
-              </p>
+              <div className="info-card">
+                <div className="col s6">
+                  <span>Año:</span>
+                </div>
+                <div className="s6">
+                  {anio_reconocimento.split("T")[0]}
+                </div>
+              </div>
 
-              <p className="info-card">
-                <span>Persona que otorga:</span> {persona_que_otorga}{" "}
-              </p>
+              <div className="info-card">
+                <div className="col s6">
+                  <span>Persona que otorga:</span>
+                </div>
+                <div className="s6">
+                  {persona_que_otorga}
+                </div>
+              </div>
 
-              <p className="info-card">
-                <span>Entidad que otorga:</span> {entidada_otorga}{" "}
-              </p>
+              <div className="info-card">
+                <div className="col s6">
+                  <span>Entidad que otorga:</span>
+                </div>
+                <div className="s6">
+                  {entidada_otorga}
+                </div>
+              </div>
 
             </div>
             <div class="card-action">

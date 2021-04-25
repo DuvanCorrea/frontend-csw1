@@ -78,19 +78,40 @@ const Cards = ({
         <div class="col s12">
           <div class="card ">
             <div class="card-content white-text">
-              <span class="card-title">{titulo_material}{" "}</span>
+              <span class="card-title">{titulo_material}</span>
 
-              <p className="info-card">
-                <span>Año:</span> {fecha_material.split("T")[0]}{" "}
-              </p>
 
-              <p className="info-card">
-                <span>Link de descarga:</span> {link_material}{" "}
-              </p>
+              <div className="info-card">
+                <div className="col s6">
+                  <span>Año:</span>
+                </div>
+                <div className="s6">
+                  {fecha_material.split("T")[0]}
+                </div>
+              </div>
 
-              <p className="info-card">
-                {docente ? <><span>Publicado:</span> {publicado ? "SI" : "NO"}{" "}</> : ""}
-              </p>
+              <div className="info-card">
+
+                <div className="col s6">
+                  <span>Link de descarga:</span>
+                </div>
+                <div className="s6">
+                  {link_material}
+                </div>
+              </div>
+
+              <div className="info-card">
+                <div className="col s6">
+                  {docente ? <span>Publicado:</span> : <></>}
+                </div>
+                <div className="s6">
+                  {docente ? <>{publicado ? "SI" : "NO"}</> : ""}
+                </div>
+              </div>
+
+
+
+
 
             </div>
             <div class="card-action">

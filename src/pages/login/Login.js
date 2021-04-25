@@ -2,6 +2,7 @@ import React, { useContext, useEffect, useState } from "react";
 import docenteContext from "../../context/docenteContext";
 import postDocenteLogin from "../../servicios/login";
 import Navbar from "../../components/navbar/Navbar";
+import Cargando from "../../components/cargando/cargando";
 import Button from "react-bootstrap/Button";
 import { useHistory } from "react-router";
 import Logo from "../../images/Logo.svg";
@@ -14,6 +15,7 @@ export default function Login() {
   const [password, setPassword] = useState("");
   const [valido, setValido] = useState(null);
   const [email, setEmail] = useState("");
+  const [cargando, setCargando] = useState(false)
   const history = useHistory();
 
   useEffect(() => {
@@ -21,6 +23,9 @@ export default function Login() {
   }, [])
 
   function handleSubmit(event) {
+
+    setCargando(true)
+
     // console.log("hola")
     // Hace peticion al servidor por medio del servicio creado
     // -------------------------------------------------------
@@ -62,7 +67,7 @@ export default function Login() {
       } else {
         setValido(false)
       }
-
+      setCargando(false)
     }
 
     aux()
@@ -70,7 +75,6 @@ export default function Login() {
     event.preventDefault();
   }
 
-  console.log(docente)
 
   if (docente && docente.id) {
     history.push("/Docente")
@@ -140,6 +144,9 @@ export default function Login() {
         </div>
 
       </div>
+
+      {/* Cargando */}
+      {cargando ? <Cargando /> : ""}
     </>
   );
 }

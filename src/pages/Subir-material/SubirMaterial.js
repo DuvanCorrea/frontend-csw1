@@ -1,6 +1,7 @@
 import NavbarDocente from "../../components/navbar_docente/NavbarDocente";
 import postDocumento from '../../servicios/postReconocimiento';
 import docenteContext from "../../context/docenteContext";
+import Cargando from "../../components/cargando/cargando";
 import postMaterial from '../../servicios/postMaterial';
 import { useHistory } from 'react-router';
 import Logo from "../../images/Logo.svg";
@@ -12,8 +13,9 @@ const SubirMaterial = () => {
 
   // Variables
   // ---------
+  const [cargando, setCargando] = useState(false);
+  const { docente } = useContext(docenteContext);
   const [error, actualizarError] = useState();
-  const { docente } = useContext(docenteContext)
   const history = useHistory()
   const [a, setA] = useState()
 
@@ -61,10 +63,8 @@ const SubirMaterial = () => {
       actualizarError(false);
     }
 
-    console.log(error)
-
     if (error === false) {
-
+      setCargando(true)
       // se contruye el objeto a enviar
       // ------------------------------
       const nuevoMaterial = {
@@ -72,13 +72,14 @@ const SubirMaterial = () => {
         material: a,
         fecha_material: material.fecha_material,
         DOCENTES_id_docente: docente.id,
-        publicado: true
+        publicado: false
       }
 
       const aux = async () => {
         const { data } = await postMaterial({ datos: nuevoMaterial })
         postDocumento({ id_material: data.id, material: a })
-        console.log("enviado")
+        setCargando(false)
+        history.push("/Docente/Perfil docente")
       }
       aux()
     }
@@ -144,6 +145,9 @@ const SubirMaterial = () => {
           {error ? <p>Debes llenar todos los campos</p> : null}
         </form>
       </div>
+
+      {/* Componente de carga */}
+      {cargando ? <Cargando /> : ""}
     </>
   );
 };

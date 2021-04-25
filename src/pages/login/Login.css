@@ -52,6 +52,8 @@
   justify-content: center;
 }
 
+/* Configuracion botones */
+
 .contenedor-login form .btn-ingresar {
   width: 120px;
   border-radius: 5px;
@@ -67,4 +69,11 @@
 .contenedor-login form .btn-ingresar:hover {
   /* border-radius: 0px; */
   background-color: #00c75a !important;
+}
+
+/* Error al ingresar datos erroneos */
+
+.contenerdor-login-a .error{
+  display: flex;
+  justify-content: center;
 }

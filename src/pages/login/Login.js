@@ -112,7 +112,6 @@ export default function Login() {
                     onChange={(e) => setPassword(e.target.value)}
                   />
                 </Form.Group>
-                <p>{valido === null || valido ? <></> : <p>Correo o contraseña incorrectos</p>}</p>
                 <Button
                   className="btn btn-ingresar"
                   type="submit"
@@ -120,6 +119,8 @@ export default function Login() {
                 >
                   Ingresar
           </Button>
+                <p>{valido === null || valido ? <></> : <span className="error">Correo o contraseña incorrectos</span>}</p>
+
               </Form>
             </div>
           </div>

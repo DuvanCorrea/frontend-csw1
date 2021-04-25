@@ -7,7 +7,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    margin-top: 70px;
+    margin-top: 50px;
 }
 
 .contenedor-formulario form {
@@ -41,6 +41,26 @@
     margin-bottom: 20px;
 }
 
-.btn {
+/* configuracion del BTN */
+
+.contenedor-formulario .btn {
     border-radius: 5px;
+    margin-left: auto;
+    margin-right: auto;
+    left: 0;
+    right: 0;
+    cursor: pointer;
+    background-color: #0CE86F !important;
+    font-weight: 700;
+}
+
+.contenedor-formulario .btn:hover {
+    background-color: #00c75a !important;
+}
+
+/* Span de cada input */
+
+.contenedor-formulario span, .contenedor-formulario p {
+    color: white;
+    font-weight: 600;
 }

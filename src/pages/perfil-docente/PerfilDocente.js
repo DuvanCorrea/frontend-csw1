@@ -59,7 +59,7 @@ function PerfilDocente() {
     if (docenteTemporal === null || docenteTemporal === undefined) {
       history.push("/")
     }
-  }
+  } 
 
   return (
     <>
@@ -119,6 +119,7 @@ function PerfilDocente() {
             </div>
           </div>
         </div>
+
       </div>
     </>
   );

@@ -1,9 +1,15 @@
 
 .btn {
-    margin: 5px;
+    margin: 4px;
     background-color: #0CB1F2;
+    font-weight: 700;
 }
 
 .btn:hover {
     background-color: #0CE86F;
+}
+
+/* Tamaño para las .row */
+.row-card{
+    width: 485px;
 }

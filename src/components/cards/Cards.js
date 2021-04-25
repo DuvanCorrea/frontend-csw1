@@ -1,11 +1,12 @@
-import React from "react";
-import { useState } from "react";
-import { useContext } from "react";
-import docenteContext from "../../context/docenteContext";
 import deleteMaterial from "../../servicios/deleteMaterial";
-import { API_URL } from "../../servicios/config"
-import "./Cards.css";
+import docenteContext from "../../context/docenteContext";
+import Cargando from "../../components/cargando/cargando";
+import { API_URL } from "../../servicios/config";
 import { useHistory } from "react-router";
+import { useContext } from "react";
+import { useState } from "react";
+import React from "react";
+import "./Cards.css";
 
 const Cards = ({
   id,
@@ -66,14 +67,14 @@ const Cards = ({
   }
 
   if (cargando) {
-    return <div>cargando...</div>
+    return <div><Cargando /></div>
   }
 
   return (
     <>
       {/* PRUEBA DE NUEVA CARTA */}
 
-      <div class="row">
+      <div class="row row-card">
         <div class="col s12">
           <div class="card ">
             <div class="card-content white-text">

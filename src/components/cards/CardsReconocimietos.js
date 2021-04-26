@@ -17,8 +17,8 @@ const CardsReconocimietos = ({
 
   // Variables
   // ---------
-  const [cargando, setCargando] = useState(false)
   const { reconocminetos, setReconocimientos } = useContext(docenteContext)
+  const [cargando, setCargando] = useState(false)
 
   const eliminarMaterial = ({ target }) => {
 
@@ -31,15 +31,18 @@ const CardsReconocimietos = ({
     // donde se guardaron al cargar la pagina 
     // del docente
     // --------------------------------------
-    console.log(reconocminetos)
-    const arrayAux = reconocminetos.filter(e => e.id_reconocimiento.toString() !== target.name.toString())
+
+    let arrayAux = []
+    if (reconocminetos.length >= 1) {
+      arrayAux = reconocminetos.filter(e => e.id_reconocimiento.toString() !== target.name.toString())
+    }
 
     setReconocimientos(arrayAux)
 
     // se envia la peticion de eliminacionde la base de datos
     // ------------------------------------------------------
     const aux = async () => {
-      await deleteReconociminento({ id_reconocimiento: id_reconocimiento })
+      const { } = await deleteReconociminento({ id_reconocimiento: id_reconocimiento })
       setCargando(false)
     }
     aux()

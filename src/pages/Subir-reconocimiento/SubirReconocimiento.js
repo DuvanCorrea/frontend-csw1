@@ -1,4 +1,5 @@
 import NavbarDocente from "../../components/navbar_docente/NavbarDocente";
+import Cargando from "../../components/cargando/cargando";
 import postReconocimiento from "../../servicios/postReconocimiento";
 import '../../pages/Subir-reconocimiento/SubirReconocimiento.css';
 import docenteContext from "../../context/docenteContext";
@@ -11,13 +12,14 @@ import React from "react";
 const SubirReconocimiento = () => {
 
   const [error, actualizarError] = useState(false);
+  const [cargando, setCargando] = useState(false);
   const { docente } = useContext(docenteContext)
   const history = useHistory()
   const [reconocimiento, actualizarReconocimiento] = useState({
+    anio_reconocimiento: "",
     persona_que_otorga: '',
     entidad_otorga: "",
     razon: "",
-    anio_reconocimiento: ""
   });
 
   //Función que se ejecuta cada que el usuario escribe en un input
@@ -45,6 +47,9 @@ const SubirReconocimiento = () => {
     actualizarError(false);
 
     if (error === false) {
+
+      setCargando(true)
+
       // se contruye el objeto a enviar
       // ------------------------------
 
@@ -58,12 +63,12 @@ const SubirReconocimiento = () => {
       }
 
       const aux = async () => {
-        const { data } = await postReconocimiento({ reconocimiento: nuevoReconocimiento })
-        console.log(data)
+        await postReconocimiento({ reconocimiento: nuevoReconocimiento })
+        alert("Reconocimiento registrado")
+        setCargando(false)
+        history.push("/Docente/Perfil docente")
       }
       aux()
-    } else {
-      alert("error en true")
     }
 
   }
@@ -120,6 +125,8 @@ const SubirReconocimiento = () => {
           {error ? <p>Debes llenar todos los campos</p> : null}
         </form>
       </div>
+      {cargando ? <Cargando /> : <></>}
+
     </div>
   );
 };

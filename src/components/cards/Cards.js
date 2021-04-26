@@ -59,7 +59,7 @@ const Cards = ({
   // Ver documento
   // -------------
   const verDocumento = () => {
-    history.push(`${API_URL}/ver material/?id_docente=${DOCENTES_id_docente}&id_material=${id}`)
+    history.push(`/ver material/?id_docente=${DOCENTES_id_docente}&id_material=${id}`)
   }
 
   if (cargando) {

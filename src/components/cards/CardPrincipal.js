@@ -1,11 +1,8 @@
-import React from "react";
-import { useState } from "react";
-import { useContext } from "react";
-import docenteContext from "../../context/docenteContext";
-import deleteMaterial from "../../servicios/deleteMaterial";
 import { API_URL } from "../../servicios/config"
-import "./CardPuncipal.css";
 import { useHistory } from "react-router";
+import { useState } from "react";
+import "./CardPuncipal.css";
+import React from "react";
 
 const Cards = ({
   id,
@@ -24,21 +21,10 @@ const Cards = ({
     nombre_documento = link_archivo_material.split("/")[link_archivo_material.split("/").length - 1]
   }
 
-  const [cargando, setCargando] = useState(false)
-  const { materiales, setMateriales, setMaterial } = useContext(docenteContext)
-
   // Ver documento
   // -------------
   const verDocumento = () => {
-    setMaterial({
-      id_docente: DOCENTES_id_docente,
-      id_material: id
-    })
-    history.push("/ver material")
-  }
-
-  if (cargando) {
-    return <div>cargando...</div>
+    history.push(`/ver material/?id_docente=${DOCENTES_id_docente}&id_material=${id}`)
   }
 
   return (

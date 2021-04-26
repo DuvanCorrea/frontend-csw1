@@ -14,9 +14,6 @@ import "./PerfilDocente.css";
 
 //Lo que se renderisa
 function PerfilDocente() {
-  const [vectorReconocimiento, setvectorReconocimiento] = useState([]);
-  const [vectorMaterial, setVectorMateriales] = useState([]);
-  const [cargandoArea, setCargandoArea] = useState(false)
 
   const {
     setReconocimientos,
@@ -85,44 +82,36 @@ function PerfilDocente() {
         </div>
 
         <div className="c">
-          {cargandoArea ? "Actualizando..." :
-            <>
-              <div className="over">
-                <h2>Materiales diseñados</h2>
-                <div className="contenedor-materiales">
-                  {materiales ? materiales.map((e) => {
-                    return (
-                      <div>
-                        <Cards key={e.id} {...e} />
-                      </div>
-                    );
-                  }) : <></>}
-                </div>
-              </div>
-            </>
-          }
+          <div className="over">
+            <h2>Materiales diseñados</h2>
+            <div className="contenedor-materiales">
+              {materiales ? materiales.map((e) => {
+                return (
+                  <div>
+                    <Cards key={e.id} {...e} />
+                  </div>
+                );
+              }) : <></>}
+            </div>
+          </div>
         </div>
 
         <div className="c">
-          {cargandoArea ? "Actualizando..." :
-            <>
-              <div className="over">
-                <h2>Reconocimientos</h2>
-                <div className="contenedor-reconocimientos">
-                  {reconocminetos ? reconocminetos.map((element) => {
-                    return (
-                      <div>
-                        <CardsReconocimietos
-                          key={element.id_reconocimiento}
-                          {...element}
-                        />
-                      </div>
-                    );
-                  }) : <></>}
-                </div>
-              </div>
-            </>
-          }
+          <div className="over">
+            <h2>Reconocimientos</h2>
+            <div className="contenedor-reconocimientos">
+              {reconocminetos ? reconocminetos.map((element) => {
+                return (
+                  <div>
+                    <CardsReconocimietos
+                      key={element.id_reconocimiento}
+                      {...element}
+                    />
+                  </div>
+                );
+              }) : <></>}
+            </div>
+          </div>
         </div>
       </div>
     </>

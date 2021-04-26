@@ -12,13 +12,14 @@ import "./Login.css";
 
 export default function Login() {
   const { docente, setDocente } = useContext(docenteContext);
+  const [cargando, setCargando] = useState(false)
   const [password, setPassword] = useState("");
   const [valido, setValido] = useState(null);
   const [email, setEmail] = useState("");
-  const [cargando, setCargando] = useState(false)
   const history = useHistory();
 
   useEffect(() => {
+
     setValido(null);
   }, [])
 
@@ -60,6 +61,11 @@ export default function Login() {
           // ----------------------------------------------------
           setDocente(data.docente)
 
+          // Agregar al local storage
+          // ------------------------
+          window.localStorage.setItem("docente", JSON.stringify(data.docente))
+          console.log(JSON.parse(window.localStorage.getItem("docente")))
+
           history.push("/Docente")
         } else {
           setValido(false)
@@ -78,6 +84,13 @@ export default function Login() {
 
   if (docente && docente.id) {
     history.push("/Docente")
+  }
+
+  // Validar si el docente esta en el local storage
+  // y setearlo en el contexto actual
+  // ----------------------------------------------
+  if (window.localStorage.getItem("docente")) {
+    setDocente(JSON.parse(window.localStorage.getItem("docente")))
   }
 
   return (

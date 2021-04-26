@@ -36,6 +36,7 @@ function PerfilDocente() {
     const urlParams = new URLSearchParams(parametros);
     id_docente_param = urlParams.get("id_docente");
 
+
     if (id_docente_param) {
       if (!docente) {
         const aux0 = async () => {
@@ -49,7 +50,13 @@ function PerfilDocente() {
         aux0();
       }
     } else {
-      if (docente === null || docente === undefined) {
+
+      // Validar si el docente esta en el local storage
+      // y setearlo en el contexto actual
+      // ----------------------------------------------
+      if (window.localStorage.getItem("docente")) {
+        setDocente(JSON.parse(window.localStorage.getItem("docente")))
+      } else if (docente === null || docente === undefined) {
         setLinkIncorrecto(true)
       }
     }
@@ -72,6 +79,7 @@ function PerfilDocente() {
 
   const cerrarSesion = () => {
     setDocente(null)
+    window.localStorage.removeItem("docente")
     history.push("/")
   }
 
@@ -82,7 +90,6 @@ function PerfilDocente() {
   //     history.push("/")
   //   }
   // }
-  console.log(docente)
   return (
     <>
       {docente ? <NavbarDocente /> : <NavbarNormal />}
@@ -113,7 +120,7 @@ function PerfilDocente() {
                 {docente ? <button onClick={() => {
                   cerrarSesion()
                 }} className="btn btn-cerrar-session waves-effect waves-light btn-small">
-                  <i className="small material-icons">close</i> Cerrar Sesion 
+                  <i className="small material-icons">close</i> Cerrar Sesion
                 </button> : ""}
               </div>
             </div>

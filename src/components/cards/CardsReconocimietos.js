@@ -31,6 +31,7 @@ const CardsReconocimietos = ({
     // donde se guardaron al cargar la pagina 
     // del docente
     // --------------------------------------
+    console.log(reconocminetos)
     const arrayAux = reconocminetos.filter(e => e.id_reconocimiento.toString() !== target.name.toString())
 
     setReconocimientos(arrayAux)
@@ -93,8 +94,8 @@ const CardsReconocimietos = ({
               <button onClick={(e) => {
                 eliminarMaterial(e)
               }}
-                className="btn btn-cards superc"
-                name={id_reconocimiento}>Eliminar</button>
+                className="btn btn-card-material"
+                name={id_reconocimiento}><i className="material-icons">delete_sweep</i>Eliminar</button>
 
             </div>
           </div>

@@ -19,8 +19,8 @@ function VerMaterial() {
     const [linkMaterial, setLinkMaterial] = useState("");
     const [docenteX, setDocenteX] = useState();
     const history = useHistory();
-    let id_docente_param = null
     let id_material_param = null
+    let id_docente_param = null
 
     useEffect(() => {
 
@@ -88,7 +88,7 @@ function VerMaterial() {
                                             <div className="infoDocente">
 
                                                 <h3>DOCENTE</h3>
-                                                <p><strong>Nombre:</strong> <a className="linkDocente" onClick={verDocente}> {docenteX ? docenteX.nombre_completo : "Cargando..."}</a></p>
+                                                <p><strong>Nombre:</strong> <a href={`/Docente/Perfil docente/?id_docente=${docenteX ? docenteX.id_docente : ""}`} className="linkDocente" onClick={verDocente}> {docenteX ? docenteX.nombre_completo : "Cargando..."}</a></p>
                                                 <p><strong>Areas del conocimiento:</strong> {docenteX ? docenteX.areas_conocimiento : "Cargando..."}</p>
                                                 <p><strong>Materias:</strong> {docenteX ? docenteX.materia : "Cargando..."}</p>
                                                 <p><strong>Correo:</strong> {docenteX ? docenteX.correo : "Cargando..."}</p>

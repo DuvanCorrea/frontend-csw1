@@ -77,21 +77,18 @@ const Cards = ({
               <span className="card-title">{titulo_material}</span>
 
               <div className="info-card">
+                <div className="col s12">
+                  <span>Link de descarga: </span>
+                  <a href={`/ver material/?id_docente=${DOCENTES_id_docente}&id_material=${id}`}>{`${ACTUAL_HOTS}/ver material/?id_docente=${DOCENTES_id_docente}&id_material=${id}`}</a>{ }
+                </div>
+              </div>
+
+              <div className="info-card">
                 <div className="col s6">
                   <span>Año:</span>
                 </div>
                 <div className="s6">
                   {fecha_material.split("T")[0]}
-                </div>
-              </div>
-
-              <div className="info-card">
-
-                <div className="col s6">
-                  <span>Link de descarga:</span>
-                </div>
-                <div className="s6">
-                  {`${ACTUAL_HOTS}/ver material/?id_docente=${DOCENTES_id_docente}&id_material=${id}`}
                 </div>
               </div>
 
@@ -103,6 +100,7 @@ const Cards = ({
                   {docente ? <>{publicado ? "SI" : "NO"}</> : ""}
                 </div>
               </div>
+
 
 
 

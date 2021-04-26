@@ -42,7 +42,7 @@ function PerfilDocente() {
   useEffect(() => {
     const aux = async () => {
       const { data } = await getReconocimientos();
-      setReconocimientos(data)
+      setReconocimientos(data) 
       setvectorReconocimiento(data);
     };
     aux();

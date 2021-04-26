@@ -18,7 +18,7 @@
     align-items: center;
     padding: 20px;
     border-radius: 5PX;
-    background-color: #3498DB;
+    background-color: #0CB1F2;
     outline: none;
 }
 
@@ -45,13 +45,12 @@
 
 .contenedor-formulario .btn {
     border-radius: 5px;
-    margin-left: auto;
-    margin-right: auto;
     left: 0;
     right: 0;
     cursor: pointer;
     background-color: #0CE86F !important;
     font-weight: 700;
+    height: 45px;
 }
 
 .contenedor-formulario .btn:hover {

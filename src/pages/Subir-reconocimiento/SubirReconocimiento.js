@@ -1,12 +1,12 @@
-import React from "react";
+import NavbarDocente from "../../components/navbar_docente/NavbarDocente";
+import postReconocimiento from "../../servicios/postReconocimiento";
+import '../../pages/Subir-reconocimiento/SubirReconocimiento.css';
+import docenteContext from "../../context/docenteContext";
+import { useHistory } from "react-router";
+import Logo from "../../images/Logo.svg";
 import { useContext } from "react";
 import { useState } from "react";
-import { useHistory } from "react-router";
-import NavbarDocente from "../../components/navbar_docente/NavbarDocente";
-import docenteContext from "../../context/docenteContext";
-import Logo from "../../images/Logo.svg";
-import '../../pages/Subir-reconocimiento/SubirReconocimiento.css';
-import postReconocimiento from "../../servicios/postReconocimiento";
+import React from "react";
 
 const SubirReconocimiento = () => {
 
@@ -49,12 +49,12 @@ const SubirReconocimiento = () => {
       // ------------------------------
 
       const nuevoReconocimiento = {
-        id_docente: docente.id,
+        anio_reconocimiento: reconocimiento.anio_reconocimiento,
         persona_que_otorga: reconocimiento.persona_que_otorga,
-        persona_que_recibe: docente.nombre,
         entidad_otorga: reconocimiento.entidad_otorga,
+        persona_que_recibe: docente.nombre,
         razon: reconocimiento.razon,
-        anio_reconocimiento: reconocimiento.anio_reconocimiento
+        id_docente: docente.id,
       }
 
       const aux = async () => {
@@ -78,7 +78,7 @@ const SubirReconocimiento = () => {
       <div className="contenedor-formulario-r">
         <form className="browser-default form">
           <img src={Logo} alt="Logo" />
-          <p>Subir información de reconocimiento</p>
+          <span>Nombre de quien hace el reconocimiento</span>
           <input
             type="text"
             name="persona_que_otorga"
@@ -87,6 +87,7 @@ const SubirReconocimiento = () => {
             onChange={handleChange}
             value={reconocimiento.persona_que_otorga}
           />
+          <span>Entidad que otroga el reconocimiento</span>
           <input
             type="text"
             name="entidad_otorga"
@@ -95,6 +96,7 @@ const SubirReconocimiento = () => {
             onChange={handleChange}
             value={reconocimiento.entidad_otorga}
           />
+          <span>Razón por la cual se otorga el reconocimiento</span>
           <input
             type="text"
             name="razon"
@@ -103,6 +105,7 @@ const SubirReconocimiento = () => {
             onChange={handleChange}
             value={reconocimiento.razon}
           />
+          <span>Fecha del reconocimiento</span>
           <input
             type="date"
             name="anio_reconocimiento"

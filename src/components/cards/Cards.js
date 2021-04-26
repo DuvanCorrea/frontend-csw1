@@ -80,7 +80,6 @@ const Cards = ({
             <div class="card-content white-text">
               <span class="card-title">{titulo_material}</span>
 
-
               <div className="info-card">
                 <div className="col s6">
                   <span>Año:</span>

@@ -18,7 +18,7 @@
     align-items: center;
     padding: 20px;
     border-radius: 5PX;
-    background-color: #3498DB;
+    background-color: #0CB1F2;
 }
 
 .contenedor-formulario-r form input {
@@ -35,11 +35,25 @@
     margin-bottom: 20px;
 }
 
-.contenedor-formulario-r p {
-    color: #FFFFFF;
-    margin-bottom: 20px;
+/* configuracion del BTN */
+
+.contenedor-formulario-r .btn {
+    border-radius: 5px;
+    left: 0;
+    right: 0;
+    cursor: pointer;
+    background-color: #0CE86F !important;
+    font-weight: 700;
+    height: 45px;
 }
 
-.btn {
-    border-radius: 5px;
+.contenedor-formulario-r .btn:hover {
+    background-color: #00c75a !important;
+}
+
+/* Span de cada input */
+
+.contenedor-formulario-r span, .contenedor-formulario-r p {
+    color: white;
+    font-weight: 600;
 }

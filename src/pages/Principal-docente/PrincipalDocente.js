@@ -1,21 +1,18 @@
-import React, { useContext } from "react";
-import { Link, useHistory } from "react-router-dom";
-
+import ImagenSubirReconocimiento from "../../images/agregar reconocimineto.jpg"
 import NavbarDocente from '../../components/navbar_docente/NavbarDocente';
 import ImagenSubirMaterial from "../../images/subir material.jpg"
-import ImagenSubirReconocimiento from "../../images/agregar reconocimineto.jpg"
-import "./PrincipalDocente.css";
-
 import docenteContext from "../../context/docenteContext";
-
+import { Link, useHistory } from "react-router-dom";
+import React, { useContext } from "react";
+import "./PrincipalDocente.css";
 
 const PrincipalDocente = () => {
 
-  const { docente } = useContext(docenteContext)
+  const { docente } = useContext(docenteContext);
   const history = useHistory();
 
   if (docente === null || docente === undefined) {
-    history.push("/Docente/Login_U")
+    history.push("/Docente/Login_U");
   }
 
   return (
@@ -58,7 +55,7 @@ const PrincipalDocente = () => {
                     <span className="card-title activator grey-text text-darken-4">Agregar reconocimientos<i className="material-icons right">more_vert</i></span>
                     <p><Link className="btn btn-principal-docente" to="/Docente/Subir reconocimiento">
                       Agregar reconocimiento
-            </Link></p>
+                      </Link></p>
                   </div>
                   <div className="card-reveal">
                     <span className="card-title grey-text text-darken-4">Agregar reconocimientos<i className="material-icons right">close</i></span>
@@ -66,8 +63,6 @@ const PrincipalDocente = () => {
                   </div>
                 </div>
               </div>
-
-
 
             </div>
           </div>

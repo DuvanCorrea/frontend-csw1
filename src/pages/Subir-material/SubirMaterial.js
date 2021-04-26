@@ -1,5 +1,5 @@
 import NavbarDocente from "../../components/navbar_docente/NavbarDocente";
-import postDocumento from '../../servicios/postReconocimiento';
+import postDocumento from '../../servicios/postDocumento';
 import docenteContext from "../../context/docenteContext";
 import Cargando from "../../components/cargando/cargando";
 import postMaterial from '../../servicios/postMaterial';
@@ -16,8 +16,8 @@ const SubirMaterial = () => {
   const [cargando, setCargando] = useState(false);
   const { docente } = useContext(docenteContext);
   const [error, actualizarError] = useState();
-  const history = useHistory()
   const [a, setA] = useState()
+  const history = useHistory()
 
   //Creo state de material
   const [material, actualizarMaterial] = useState({
@@ -29,19 +29,26 @@ const SubirMaterial = () => {
   const handleChange = e => {
 
     if (e.target.files) {
-
       const aux = new FormData()
       aux.append("material", e.target.files[0])
       setA(aux)
-
     } else {
-
       actualizarMaterial({
         ...material,
         [e.target.name]: e.target.value
       })
-
     }
+
+    // Validacion
+    if (material.titulo_material.trim() === ''
+      || material.fecha_material.trim() === ''
+      || a === null
+      || a === undefined) {
+      actualizarError(true);
+    } else {
+      actualizarError(false);
+    }
+
   }
 
   //Cuando el docente presiona agregar cita
@@ -64,24 +71,28 @@ const SubirMaterial = () => {
     }
 
     if (error === false) {
+      alert("ere")
       setCargando(true)
       // se contruye el objeto a enviar
       // ------------------------------
       const nuevoMaterial = {
         titulo_material: material.titulo_material,
-        material: a,
         fecha_material: material.fecha_material,
         DOCENTES_id_docente: docente.id,
-        publicado: false
+        publicado: false,
+        material: a,
       }
+
+      // console.log(nuevoMaterial)
 
       const aux = async () => {
         const { data } = await postMaterial({ datos: nuevoMaterial })
         postDocumento({ id_material: data.id, material: a })
         setCargando(false)
+        alert("Material ingresado")
         history.push("/Docente/Perfil docente")
       }
-      aux()
+      aux();
     }
 
   }
@@ -98,7 +109,7 @@ const SubirMaterial = () => {
           onSubmit={SubmitMaterial}
           className="browser-default form"
         >
-          <img src={Logo} alt="Logo" />
+          <img className="imagen-logo" src={Logo} alt="Logo" />
           <p>Subir material diseñado</p>
 
           <span>Nombre / Titulo del material</span>

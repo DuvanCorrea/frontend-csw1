@@ -44,6 +44,7 @@ function VerMaterial() {
 
             const auxMaterial = async () => {
                 const { data } = await getMaterial({ id_material: id_material_param })
+                console.log("materi", data)
                 if (data) {
                     setMaterialActual(data)
                     setLinkMaterial(`${API_URL}/api/material/documento/${data.link_archivo_material.split("/")[data.link_archivo_material.split("/").length - 1]}`)

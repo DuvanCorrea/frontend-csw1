@@ -6,7 +6,7 @@
 .contenedor-formulario {
     display: flex;
     justify-content: center;
-    align-items: center;
+    /* align-items: center; */
     margin-top: 50px;
 }
 
@@ -15,7 +15,7 @@
     display: flex;
     flex-direction: column;
     justify-content: center;
-    align-items: center;
+    /* align-items: center; */
     padding: 20px;
     border-radius: 5PX;
     background-color: #0CB1F2;
@@ -34,6 +34,13 @@
 .contenedor-formulario img {
     width: 85px;
     margin-bottom: 20px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.contenedor-formulario p {
+    margin-left: auto;
+    margin-right: auto;
 }
 
 .contenedor-formulario p {
@@ -62,4 +69,9 @@
 .contenedor-formulario span, .contenedor-formulario p {
     color: white;
     font-weight: 600;
+}
+
+/* Input file */
+.contenedor-formulario .file-path{
+    color: white;
 }

@@ -10,6 +10,7 @@ import getDocente from "../../servicios/getDocente";
 import Cards from "../../components/cards/Cards";
 import { useHistory } from "react-router";
 import "./PerfilDocente.css";
+import { ACTUAL_HOTS } from "../../servicios/config";
 
 
 //Lo que se renderisa
@@ -105,23 +106,42 @@ function PerfilDocente() {
               <h2 className="titulos-perfil">Perfil docente</h2>
               <img src={UsuarioIcon} alt="Logo" />
               <div className="info-perfil">
-                <p>
-                  <span>Nombre:</span> {docente ? docente.nombre : <>{docenteTemporal ? docenteTemporal.nombre_completo : ""}</>}
-                </p>
-                <p>
-                  <span>Materias:</span> {docente ? docente.areas : <>{docenteTemporal ? docenteTemporal.areas_conocimiento : ""}</>}
-                </p>
-                <p>
-                  <span>Areas del conocimiento:</span> {docente ? docente.materia : <>{docenteTemporal ? docenteTemporal.materia : ""}</>}
-                </p>
-                <p>
-                  <span>Correo:</span> {docente ? docente.correo : <>{docenteTemporal ? docenteTemporal.correo : ""}</>}
-                </p>
-                {docente ? <button onClick={() => {
-                  cerrarSesion()
-                }} className="btn btn-cerrar-session waves-effect waves-light btn-small">
-                  <i className="small material-icons">close</i> Cerrar Sesion
+                <div>
+                  <p>
+                    <span>Nombre:</span> {docente ? docente.nombre : <>{docenteTemporal ? docenteTemporal.nombre_completo : ""}</>}
+                  </p>
+                  <p>
+                    <span>Materias:</span> {docente ? docente.areas : <>{docenteTemporal ? docenteTemporal.areas_conocimiento : ""}</>}
+                  </p>
+                  <p>
+                    <span>Areas del conocimiento:</span> {docente ? docente.materia : <>{docenteTemporal ? docenteTemporal.materia : ""}</>}
+                  </p>
+                  <p>
+                    <span>Correo:</span> {docente ? docente.correo : <>{docenteTemporal ? docenteTemporal.correo : ""}</>}
+                  </p>
+                  <p>
+                    <span>Link del perfil:</span>
+                  </p>
+                  <p>
+                    {docente ?
+                      <a href={`${ACTUAL_HOTS}/Docente/Perfil%20docente/?id_docente=${docente.id}`}>
+                        {`${ACTUAL_HOTS}/Docente/Perfil%20docente/?id_docente=${docente.id}`}
+                      </a>
+                      :
+                      <>{docenteTemporal ?
+                        <a href={`${ACTUAL_HOTS}/Docente/Perfil%20docente/?id_docente=${docenteTemporal.id_docente}`}>
+                          {`${ACTUAL_HOTS}/Docente/Perfil%20docente/?id_docente=${docenteTemporal.id_docente}`}
+                        </a>
+                        : ""}</>}
+                  </p>
+                </div>
+                <div>
+                  {docente ? <button onClick={() => {
+                    cerrarSesion()
+                  }} className="btn btn-cerrar-session waves-effect waves-light btn-small">
+                    <i className="small material-icons">close</i> Cerrar Sesion
                 </button> : ""}
+                </div>
               </div>
             </div>
 

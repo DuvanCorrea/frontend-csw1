@@ -1,9 +1,9 @@
 import axios from "axios";
 import { API_URL } from "./config";
 
-export default async function postDocumento({ id_material, material }) {
+export default async function postDocumento({ reconocimiento }) {
     try {
-        const { data } = await axios.post(`${API_URL}/api/material/documento/${id_material}`, material);
+        const { data } = await axios.post(`${API_URL}/api/reconocimiento`, reconocimiento);
         return { data };
     } catch (error) {
         return { data: null };

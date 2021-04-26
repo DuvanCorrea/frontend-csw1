@@ -58,7 +58,7 @@ const SubirReconocimiento = () => {
       }
 
       const aux = async () => {
-        const { data } = await postReconocimiento({ datos: nuevoReconocimiento })
+        const { data } = await postReconocimiento({ reconocimiento: nuevoReconocimiento })
         console.log(data)
       }
       aux()

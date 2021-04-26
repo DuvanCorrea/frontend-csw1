@@ -28,7 +28,7 @@ const Cards = ({
   }
 
   const [cargando, setCargando] = useState(false)
-  const { docente, materiales, setMateriales, setMaterial } = useContext(docenteContext)
+  const { docente, materiales, setMateriales } = useContext(docenteContext)
 
   const eliminarMaterial = ({ target }) => {
 
@@ -59,11 +59,7 @@ const Cards = ({
   // Ver documento
   // -------------
   const verDocumento = () => {
-    setMaterial({
-      id_docente: DOCENTES_id_docente,
-      id_material: id
-    })
-    history.push("/ver material")
+    history.push(`${API_URL}/ver material/?id_docente=${DOCENTES_id_docente}&id_material=${id}`)
   }
 
   if (cargando) {
@@ -74,11 +70,11 @@ const Cards = ({
     <>
       {/* PRUEBA DE NUEVA CARTA */}
 
-      <div class="row row-card">
-        <div class="col s12">
-          <div class="card ">
-            <div class="card-content white-text">
-              <span class="card-title">{titulo_material}</span>
+      <div className="row row-card">
+        <div className="col s12">
+          <div className="card ">
+            <div className="card-content white-text">
+              <span className="card-title">{titulo_material}</span>
 
               <div className="info-card">
                 <div className="col s6">
@@ -113,7 +109,7 @@ const Cards = ({
 
 
             </div>
-            <div class="card-action">
+            <div className="card-action">
 
               {/* BOTONES */}
 

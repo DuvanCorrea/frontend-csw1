@@ -16,10 +16,12 @@ import "./PerfilDocente.css";
 function PerfilDocente() {
   const [vectorReconocimiento, setvectorReconocimiento] = useState([]);
   const [vectorMaterial, setVectorMateriales] = useState([]);
+  const [cargandoArea, setCargandoArea] = useState(false)
 
   const {
     setReconocimientos,
     docenteTemporal,
+    reconocminetos,
     setMateriales,
     setDocente,
     materiales,
@@ -29,24 +31,19 @@ function PerfilDocente() {
 
   //Trae los datos de materiales
   useEffect(() => {
-    const aux = async () => {
+    const aux1 = async () => {
       const { data } = await getMateriales();
       setMateriales(data)
-      setVectorMateriales(data);
     };
-    aux();
+    aux1();
 
-  }, [setVectorMateriales]);
-
-  //Trae los datos de reconocimientos
-  useEffect(() => {
-    const aux = async () => {
+    const aux2 = async () => {
       const { data } = await getReconocimientos();
-      setReconocimientos(data) 
-      setvectorReconocimiento(data);
+      setReconocimientos(data)
     };
-    aux();
-  }, [setvectorReconocimiento]);
+    aux2();
+
+  }, []);
 
   const cerrarSesion = () => {
     setDocente(null)
@@ -59,7 +56,7 @@ function PerfilDocente() {
     if (docenteTemporal === null || docenteTemporal === undefined) {
       history.push("/")
     }
-  } 
+  }
 
   return (
     <>
@@ -88,38 +85,45 @@ function PerfilDocente() {
         </div>
 
         <div className="c">
-          <div className="over">
-            <h2>Materiales diseñados</h2>
-            <div className="contenedor-materiales">
-              {materiales ? vectorMaterial.map((e) => {
-                return (
-                  <div>
-                    <Cards key={e.id} {...e} />
-                  </div>
-                );
-              }) : <></>}
-            </div>
-          </div>
+          {cargandoArea ? "Actualizando..." :
+            <>
+              <div className="over">
+                <h2>Materiales diseñados</h2>
+                <div className="contenedor-materiales">
+                  {materiales ? materiales.map((e) => {
+                    return (
+                      <div>
+                        <Cards key={e.id} {...e} />
+                      </div>
+                    );
+                  }) : <></>}
+                </div>
+              </div>
+            </>
+          }
         </div>
 
         <div className="c">
-          <div className="over">
-            <h2>Reconocimientos</h2>
-            <div className="contenedor-reconocimientos">
-              {vectorReconocimiento ? vectorReconocimiento.map((element) => {
-                return (
-                  <div>
-                    <CardsReconocimietos
-                      key={element.id_reconocimiento}
-                      {...element}
-                    />
-                  </div>
-                );
-              }) : <></>}
-            </div>
-          </div>
+          {cargandoArea ? "Actualizando..." :
+            <>
+              <div className="over">
+                <h2>Reconocimientos</h2>
+                <div className="contenedor-reconocimientos">
+                  {reconocminetos ? reconocminetos.map((element) => {
+                    return (
+                      <div>
+                        <CardsReconocimietos
+                          key={element.id_reconocimiento}
+                          {...element}
+                        />
+                      </div>
+                    );
+                  }) : <></>}
+                </div>
+              </div>
+            </>
+          }
         </div>
-
       </div>
     </>
   );

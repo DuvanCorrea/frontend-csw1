@@ -15,7 +15,7 @@ const Cards = ({
   fecha_material,
   publicado,
   link_archivo_material,
-  DOCENTES_id_docente
+  DOCENTES_id_docente,
 }) => {
 
   // Variables

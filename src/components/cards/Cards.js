@@ -1,7 +1,7 @@
 import deleteMaterial from "../../servicios/deleteMaterial";
 import docenteContext from "../../context/docenteContext";
 import Cargando from "../../components/cargando/cargando";
-import { API_URL } from "../../servicios/config";
+import { ACTUAL_HOTS, API_URL } from "../../servicios/config";
 import { useHistory } from "react-router";
 import { useContext } from "react";
 import { useState } from "react";
@@ -11,7 +11,7 @@ import "./Cards.css";
 const Cards = ({
   id,
   titulo_material,
-  link_material,
+  // link_material,
   fecha_material,
   publicado,
   link_archivo_material,
@@ -91,7 +91,7 @@ const Cards = ({
                   <span>Link de descarga:</span>
                 </div>
                 <div className="s6">
-                  {link_material}
+                  {`${ACTUAL_HOTS}/ver material/?id_docente=${DOCENTES_id_docente}&id_material=${id}`}
                 </div>
               </div>
 
@@ -112,22 +112,23 @@ const Cards = ({
             <div className="card-action">
 
               {/* BOTONES */}
+              <div className="btns-padre">
+                {docente ? <><button onClick={(e) => {
+                  eliminarMaterial(e)
+                }}
+                  className="btn btn-card-material"
+                  name={id}><i className="material-icons">delete_forever</i>Eliminar</button></> : ""}
+                {/* {docente ? <button name={id} className="btn btn-cards superc">Editar</button> : ""} */}
 
-              {docente ? <><button onClick={(e) => {
-                eliminarMaterial(e)
-              }}
-                className="btn btn-cards superc"
-                name={id}>Eliminar</button></> : ""}
-              {/* {docente ? <button name={id} className="btn btn-cards superc">Editar</button> : ""} */}
+                {docente ? <>{publicado ? <></> : <button className="btn btn-card-material"><i className="material-icons">public</i>Publicar</button>}</> : ""}
 
-              {docente ? <>{publicado ? <></> : <button className="btn btn-cards superc">Publicar</button>}</> : ""}
+                <a className="btn btn-card-material"
+                  href={`${API_URL}/api/material/documento/${nombre_documento}`}><i className="material-icons">cloud_download</i>Descargar</a>
 
-              <a className="btn btn-cards superc"
-                href={`${API_URL}/api/material/documento/${nombre_documento}`}>Descargar</a>
-
-              <button onClick={() => {
-                verDocumento()
-              }} name={id} className="btn btn-cards superc">Ver</button>
+                <button onClick={() => {
+                  verDocumento()
+                }} name={id} className="btn btn-card-material"><i className="material-icons">photo_album</i>Ver</button>
+              </div>
             </div>
           </div>
         </div>

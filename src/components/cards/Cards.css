@@ -13,3 +13,17 @@
 .row-card{
     width: 485px;
 }
+
+/* BTN */
+
+.btn-card-material{
+    /* width: 100%; */
+    padding: 0 10px 0 10px;
+    display: flex;
+    align-items: center;
+}
+
+.btns-padre{
+    display: flex;
+    justify-content: space-around;
+}

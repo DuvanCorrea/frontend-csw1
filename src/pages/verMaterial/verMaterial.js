@@ -1,10 +1,10 @@
 import NavbarDocente from "../../components/navbar_docente/NavbarDocente";
 import React, { useEffect, useContext, useState } from "react";
+import { API_URL, ACTUAL_HOTS } from "../../servicios/config";
 import docenteContext from "../../context/docenteContext";
 import getMaterial from "../../servicios/getMaterial";
 import Navbar from "../../components/navbar/Navbar";
 import getDocente from "../../servicios/getDocente";
-import { API_URL } from "../../servicios/config"
 import { useHistory } from "react-router";
 import "./verMaterial.css";
 
@@ -35,7 +35,7 @@ function VerMaterial() {
             const auxDocente = async () => {
                 const { data } = await getDocente({ id_docente: id_docente_param })
                 if (data) {
-                    setDocenteX("data", data)
+                    setDocenteX(data)
                 } else {
                     setLinkIncorrecto(true)
                 }
@@ -47,14 +47,12 @@ function VerMaterial() {
                 if (data) {
                     setMaterialActual(data)
                     setLinkMaterial(`${API_URL}/api/material/documento/${data.link_archivo_material.split("/")[data.link_archivo_material.split("/").length - 1]}`)
-                }else{
+                } else {
                     setLinkIncorrecto(true)
                 }
 
             }
             auxMaterial()
-        } else {
-            return (<>404</>)
         }
 
     }, []);
@@ -66,11 +64,6 @@ function VerMaterial() {
         setDocenteTemporal(docenteX)
         history.push("/Docente/Perfil docente")
     }
-
-
-    // if (material === null || material === undefined) {
-    //     history.push("/")
-    // }
 
     return (
         <>
@@ -95,7 +88,9 @@ function VerMaterial() {
                                             <div className="infoDocente">
 
                                                 <h3>DOCENTE</h3>
-                                                <strong>Nombre:</strong> <a className="linkDocente" onClick={verDocente}> {docenteX ? docenteX.nombre_completo : "Cargando..."}</a>
+                                                <p><strong>Nombre:</strong> <a className="linkDocente" onClick={verDocente}> {docenteX ? docenteX.nombre_completo : "Cargando..."}</a></p>
+                                                <p><strong>Areas del conocimiento:</strong> {docenteX ? docenteX.areas_conocimiento : "Cargando..."}</p>
+                                                <p><strong>Materias:</strong> {docenteX ? docenteX.materia : "Cargando..."}</p>
                                                 <p><strong>Correo:</strong> {docenteX ? docenteX.correo : "Cargando..."}</p>
 
                                             </div>
@@ -109,7 +104,7 @@ function VerMaterial() {
                                                 <p><strong>Fecha:</strong> {materialActual ? materialActual.fecha_material.split("T")[0] : "Cargando..."}</p>
                                                 <p><strong>Link de este material</strong></p>
                                                 <p>{materialActual ? <a href={`/ver material/?id_docente=${materialActual.DOCENTES_id_docente}&id_material=${materialActual.id}`}>
-                                                    {`aqui va el dominio/ver material/?id_docente=${materialActual.DOCENTES_id_docente}&id_material=${materialActual.id}`}
+                                                    {`${ACTUAL_HOTS}/?id_docente=${materialActual.DOCENTES_id_docente}&id_material=${materialActual.id}`}
                                                 </a> : "Cargando..."}</p>
 
                                             </div>
@@ -145,8 +140,6 @@ function VerMaterial() {
                         </div>
                     </div>
                 </>}
-
-
 
         </>
     );
